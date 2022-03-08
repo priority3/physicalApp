@@ -1,0 +1,10 @@
+<!--components/deBounceButton/deBounceButton.wxml-->
+<van-button 
+  type="{{type}}" 
+  size="{{size}}"
+  disabled="{{disabled}}"
+  capture-catch:tap="btnClick"
+  custom-style="{{customStyle}}"
+>
+  {{btnValue}}
+</van-button>

@@ -1,0 +1,43 @@
+<!--pages/login/login.wxml-->
+<view class="liner-color">
+  <view class="login-container">
+  <view class="sub-title">
+    体测预约
+  </view>
+  <view class="pri-title">体质测试预约</view>
+
+  <view class="login-box">
+    <image src="../../assets/logo.png" alt=""/>
+    <view class="login-content">
+      <van-cell-group>
+        <van-field
+          value="{{ username }}"
+          required
+          clearable
+          label="学号"
+          placeholder="请输入学号"
+          label-class="cus-text"
+        />
+
+        <van-field
+          value="{{ password }}"
+          type="password"
+          label="密码"
+          placeholder="请输入密码"
+          required
+          label-class="cus-text"
+
+        />
+        
+      </van-cell-group>
+      <debounce-button
+          btnValue="登录"
+          customStyle="width:100%;border-radius:12rpx;margin-top:20rpx;"
+          bind:loginClick="loginClick"
+        ></debounce-button>
+    </view>
+    <!-- <van-divider /> -->
+  </view>
+ 
+</view>
+</view>

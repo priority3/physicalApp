@@ -1,0 +1,25 @@
+/* pages/login/login.wxss */
+.liner-color{
+  background-image: linear-gradient(to bottom,#ffffff,rgba(175,220,245,0.36),#ffffff)
+}
+.login-container{
+  width: 90%;
+  margin: 0 auto;
+  
+}
+.sub-title{
+  color: rgba(96, 96, 96, 1);
+  font-size: 28rpx;
+}
+.pri-title{
+  display: flex;
+  justify-content: center;
+  align-items: center;  
+  margin: 80rpx 0;
+  font-size:x-large;
+  font-weight: 600;
+}
+
+.login-box .login-content{
+  margin-top: 60rpx;
+}
