@@ -1,0 +1,40 @@
+<!--components/physicalCard/physicalCard.wxml-->
+<view class="card-header">
+  <view class="card-title">
+    <van-tag type="primary">标签</van-tag>
+    <view class="title-header">相关体测信息</view>
+  </view>
+  <view class="card-midle">
+    <view class="cont-info">
+      <view class="cont-item">
+        <van-icon name="todo-list-o" />
+        <text class="cont-text">7.9-7.29</text>
+      </view>
+      <view class="cont-item">
+        <van-icon name="clock-o" />
+        <text class="cont-text">13:00-17:00</text>
+      </view>
+      <view class="cont-item">
+        <van-icon name="home-o" />
+        <text class="cont-text">临江体育场临江体育场临江体育场</text>
+      </view>
+      <view class="cont-item">
+        <van-icon name="user-o" />
+        <text class="cont-text">19/30</text>
+      </view>
+    </view>
+    <view class="cont-img-box">
+      <image src="https://i.bmp.ovh/imgs/2022/03/5ae01a54dac2d0c7.png" alt="" class="cont-img"/>
+    </view>
+  </view>
+  <van-divider />
+  <view class="user-info">
+    <view class="user-box">
+      <image src="https://i.bmp.ovh/imgs/2022/03/a61e4b55483e255f.png" alt="" class="info-avator"/>
+      <text class="user-text">负责人负责人负责人负责人负责人</text>
+    </view>
+    <view class="info-status">
+      <van-button type="info" size="small">预约体测</van-button>
+    </view>
+  </view>
+</view>

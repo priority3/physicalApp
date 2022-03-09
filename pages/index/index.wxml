@@ -1,0 +1,9 @@
+<view class="home-box">
+  <image src="https://i.bmp.ovh/imgs/2022/03/553327bdd6266790.png" alt="" class="logo-img"/>
+  <van-divider />
+  <text>测试信息</text>
+  <block>
+    <phy-card></phy-card>
+    <phy-card></phy-card>
+  </block>
+</view>

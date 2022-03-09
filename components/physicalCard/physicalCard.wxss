@@ -1,0 +1,73 @@
+/* components/physicalCard/physicalCard.wxss */
+.card-header{
+  padding: 10rpx;
+  box-shadow: var(--ShadowSize) var(--grayShadow);
+}
+.card-title{
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+.card-title .title-header{
+  margin: 0 auto;
+  font-weight: 700;
+  font-size: 35rpx;
+}
+.card-midle{
+  margin-top: 30rpx;
+  display: flex;
+  justify-content: start;
+  align-items: center;
+}
+.cont-info{
+  display: flex;
+  flex-direction: column;
+  height: 200rpx;
+  justify-content: space-between;
+  align-items: start;
+  width: 40%;
+  
+}
+.cont-info .cont-item .cont-text{
+  margin-left: 20rpx; 
+}
+.cont-info .cont-item {
+  width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.cont-img-box{
+  width: 100%;
+}
+.cont-img{
+  width: inherit;
+  height: 250rpx;
+  border-radius: 10rpx;
+}
+.user-info{
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+}
+.user-box{
+  display: flex;
+  width: 50%;
+  justify-content: space-between;
+  align-items: center;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  gap: 10rpx;
+}
+
+.info-avator{
+  flex-shrink:0;
+  width: 80rpx;
+  height: 80rpx;
+  border-radius: 50%;
+}
+
+
+

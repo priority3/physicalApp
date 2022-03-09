@@ -1,0 +1,9 @@
+<!-- components/HeaderBar/HeaderBar.wxml -->
+<view class="header-bar" style="background-color:{{backgroundColor}}">
+  <view class="container-status" style="height:{{customBarHeight}}px;padding-top:{{statusBarHeight}}px;">
+    <slot name="title"></slot>
+  </view>
+  <view class="container-insert">
+    <slot name="tabs"></slot>
+  </view>
+</view>

@@ -1,9 +1,9 @@
 <!--pages/login/login.wxml-->
 <view class="liner-color">
   <view class="login-container">
-  <view class="sub-title">
+  <!-- <view class="sub-title">
     体测预约
-  </view>
+  </view> -->
   <view class="pri-title">体质测试预约</view>
 
   <view class="login-box">

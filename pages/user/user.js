@@ -1,5 +1,4 @@
-// pages/login/login.js
-const app = getApp()
+// pages/user/user.js
 Page({
 
   /**
@@ -8,14 +7,12 @@ Page({
   data: {
 
   },
-  loginClick(){
-    // console.log("@@");
-    wx.router.switchTab('/pages/index/index')
-  },
+
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+
   },
 
   /**

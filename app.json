@@ -2,13 +2,30 @@
   "pages": [
     "pages/login/login",
     "pages/index/index",
-    "pages/logs/logs"
+    "pages/user/user"
   ],
   "window": {
     "backgroundTextStyle": "light",
-    "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "Weixin",
+    "navigationBarBackgroundColor": "#BEE8FF",
+    "navigationBarTitleText": "体测预约",
     "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "borderStyle":"black",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "iconPath": "assets/sport.png",
+        "selectedIconPath": "assets/sport-active.png",
+        "text": "预约"
+      },
+      {
+        "pagePath": "pages/user/user",
+        "iconPath": "assets/user.png",
+        "selectedIconPath": "/assets/user-active.png",
+        "text": "个人"
+      }
+    ]
   },
   "sitemapLocation": "sitemap.json"
 }
