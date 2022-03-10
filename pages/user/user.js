@@ -5,14 +5,29 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    userInfo:{}
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    // wx.showModal({
+    //   title: '获取用户信息',
+    //   success:(res)=>{
+    //     if(res.confirm){
+    //       wx.getUserProfile({
+    //         desc:"用于显示用户信息",
+    //         success:(res)=>{
+    //           const {userInfo} = res
+    //           this.setData({
+    //             userInfo
+    //           })
+    //         }
+    //       })
+    //     }
+    //   }
+    // })
   },
 
   /**

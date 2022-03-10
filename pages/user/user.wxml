@@ -1,2 +1,20 @@
 <!--pages/user/user.wxml-->
-<text>pages/user/user.wxml</text>
+<view>
+  <view class="user-info-box">
+    <!-- 只做展示使用得头像和昵称 -->
+    <view  class="user-avatar">
+      <open-data type="userAvatarUrl" ></open-data>
+    </view>
+    <open-data type="userNickName" class="user-name"></open-data>
+    <text>一些签名</text>
+  </view>
+
+  <!-- 波浪 -->
+    <!-- 背景波浪 -->
+  <view class="background_view">
+    <!-- <view class='wave'></view> -->
+    <view class='wave_1'></view>
+    <view class='wave_2'></view>
+    <view class='wave_3'></view>
+  </view>
+</view>

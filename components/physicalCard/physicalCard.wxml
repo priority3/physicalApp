@@ -1,7 +1,7 @@
 <!--components/physicalCard/physicalCard.wxml-->
 <view class="card-header">
   <view class="card-title">
-    <van-tag type="primary">标签</van-tag>
+    <van-tag type="success">标签</van-tag>
     <view class="title-header">相关体测信息</view>
   </view>
   <view class="card-midle">
@@ -34,7 +34,7 @@
       <text class="user-text">负责人负责人负责人负责人负责人</text>
     </view>
     <view class="info-status">
-      <van-button type="info" size="small">预约体测</van-button>
+      <van-button type="info" size="small" capture-catch:tap="showDetail" disabled="{{isAppintment}}">{{isAppintment ? '已预约':'预约体测' }}</van-button>
     </view>
   </view>
 </view>
