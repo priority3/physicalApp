@@ -1,7 +1,7 @@
 /* pages/user/user.wxss */
 .user-info-box{
   width: 100%;
-  height: 500rpx;
+  height: 380rpx;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -20,6 +20,13 @@
 
 /* 波浪 */
 /* wave */
+.background_view {
+  position: relative;
+  height: 100rpx;
+  width: 100%;
+  /* background-color: aqua; */
+  overflow: hidden;
+}
 @keyframes rotate {
   50% {
     transform: translate(-50%, -73%) rotate(180deg);

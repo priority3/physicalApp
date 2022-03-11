@@ -1,0 +1,59 @@
+<!--pages/user/user-info/user-info.wxml-->
+<view>
+  <van-cell-group>
+    <van-field
+      value="{{ username }}"
+      required
+      clearable
+      label="姓名"
+      icon="question-o"
+      placeholder="请输入用户名"
+      bind:click-icon="onClickIcon"
+    />
+
+    <van-field
+      value="{{ password }}"
+      label="学号"
+      placeholder="请输入学号"
+      required
+    />
+    <van-field
+      value="{{ password }}"
+      label="年级"
+      placeholder="请选择年级"
+      icon="arrow-down"
+      required
+      bind:click-icon="selectGrade"
+    />
+    <van-picker columns="{{ columns }}" bind:change="onChange" />
+    <van-field
+      value="{{ password }}"
+      label="学院"
+      placeholder="请选择学院"
+      icon="arrow-down"
+      bind:click-icon="selectMajor"
+      required
+    />
+    <van-field
+      value="{{ password }}"
+      label="专业"
+      placeholder="请输入专业"
+      required
+    />
+    
+    <van-field
+      value="{{ password }}"
+      type="password"
+      label="密码"
+      placeholder="请输入密码"
+      required
+    />
+    <van-field
+      value="{{ password }}"
+      type="password"
+      label="密码"
+      placeholder="请输入密码"
+      required
+    />
+  </van-cell-group>
+</view>

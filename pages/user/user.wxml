@@ -1,20 +1,61 @@
 <!--pages/user/user.wxml-->
 <view>
-  <view class="user-info-box">
-    <!-- 只做展示使用得头像和昵称 -->
-    <view  class="user-avatar">
-      <open-data type="userAvatarUrl" ></open-data>
+  <view class="user-info-container">
+    <view class="user-info-box">
+      <!-- 只做展示使用得头像和昵称 -->
+      <view  class="user-avatar">
+        <open-data type="userAvatarUrl" ></open-data>
+      </view>
+      <open-data type="userNickName" class="user-name"></open-data>
+      <text>一些签名</text>
     </view>
-    <open-data type="userNickName" class="user-name"></open-data>
-    <text>一些签名</text>
-  </view>
 
   <!-- 波浪 -->
     <!-- 背景波浪 -->
-  <view class="background_view">
-    <!-- <view class='wave'></view> -->
-    <view class='wave_1'></view>
-    <view class='wave_2'></view>
-    <view class='wave_3'></view>
+    <view class="background_view">
+      <!-- <view class='wave'></view> -->
+      <view class='wave_1'></view>
+      <view class='wave_2'></view>
+      <view class='wave_3'></view>
+    </view>
+  </view>
+
+  <!-- cell 功能区 -->
+  <view class="user-fun">
+    <van-cell
+      icon="friends-o"
+      is-link
+      title="个人信息"
+      link-type="navigateTo"
+      url="/pages/user/user-info/user-info"
+    />
+    <van-cell
+      icon="vip-card-o"
+      is-link
+      title="免测申请"
+      link-type="navigateTo"
+      url="/pages/user/free-appiont/free-appiont"
+    />
+    <van-cell
+      icon="label-o"
+      is-link
+      title="预约信息"
+      link-type="navigateTo"
+      url="/pages/dashboard/index"
+    />
+    <van-cell
+      icon="failure"
+      is-link
+      title="隐私数据"
+      link-type="navigateTo"
+      url="/pages/dashboard/index"
+    />
+    <van-cell
+      icon="comment-o"
+      is-link
+      title="意见反馈"
+      link-type="navigateTo"
+      url="/pages/dashboard/index"
+    />
   </view>
 </view>
