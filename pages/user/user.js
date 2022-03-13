@@ -5,29 +5,15 @@ Page({
    * 页面的初始数据
    */
   data: {
-    userInfo:{}
+    userInfo:{},
+    avatarImg:""
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    // wx.showModal({
-    //   title: '获取用户信息',
-    //   success:(res)=>{
-    //     if(res.confirm){
-    //       wx.getUserProfile({
-    //         desc:"用于显示用户信息",
-    //         success:(res)=>{
-    //           const {userInfo} = res
-    //           this.setData({
-    //             userInfo
-    //           })
-    //         }
-    //       })
-    //     }
-    //   }
-    // })
+    
   },
 
   /**
@@ -41,7 +27,13 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    // 获取头像链接
+    const avatarImg = wx.getStorageItem("avatar")
+    if(avatarImg){
+      this.setData({
+        avatarImg
+      })
+    }
   },
 
   /**

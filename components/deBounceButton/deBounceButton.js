@@ -24,9 +24,9 @@ Component({
       type:String,
       value:""
     },
-    btnValue:{
-      type:String,
-      value:"按钮"
+    isLoading:{
+      type:Boolean,
+      value:false
     }
   },
 
@@ -41,9 +41,12 @@ Component({
    * 组件的方法列表
    */
   methods: {
-    btnClick(){
-      
-      this.triggerEvent('loginClick', { xixi: "666传值成功" });
+    btnClick(e){
+      this.triggerEvent('debouncetap', { xixi: "666传值成功" });
+    }
+  },
+  lifetimes:{
+    attached(){
     }
   }
 })

@@ -1,4 +1,8 @@
 // pages/login/login.js
+
+import {postLogin} from "../../services/logionRequest"
+
+import {idReg} from "../../utils/util"
 const app = getApp()
 Page({
 
@@ -6,16 +10,45 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    userName:"",
+    password:"",
+    isLoading:false
   },
+  
   loginClick(){
-    // console.log("@@");
-    wx.router.switchTab('/pages/index/index')
+    
+    const {userName,password} = this.data
+    // 检验
+    if(idReg(userName)){
+      this.setData({
+        isLoading:true
+      })
+      return postLogin({userName,password}).then((res) => {
+        wx.setStorageItem({
+          ...res.data
+        })
+        this.handleRedirect()
+      }).catch(err => {
+        console.log(err,"login");
+      }).finally(() => {
+        this.setData({
+          isLoading:false
+        })
+      })
+    }
+    // wx.router.switchTab('/pages/index/index')
   },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    let token = wx.getStorageItem("token")
+    if(token){
+      this.handleRedirect()
+    }
+  },
+  handleRedirect() {
+    return wx.router.switchTab("/pages/index/index");
   },
 
   /**

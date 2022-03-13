@@ -31,7 +31,7 @@ Component({
         success:(res)=>{
           console.log(res);
           if(res.confirm){
-            _this.setData({
+            this.setData({
               isAppintment:true
             })
           }

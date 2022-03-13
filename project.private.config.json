@@ -35,6 +35,12 @@
           "pathName": "pages/user/user-info/user-info",
           "query": "",
           "scene": null
+        },
+        {
+          "name": "pages/user/free-appiont/free-appiont",
+          "pathName": "pages/user/free-appiont/free-appiont",
+          "query": "",
+          "scene": null
         }
       ]
     }

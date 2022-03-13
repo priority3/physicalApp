@@ -11,7 +11,7 @@
     <view class="login-content">
       <van-cell-group>
         <van-field
-          value="{{ username }}"
+          model:value="{{ userName }}"
           required
           clearable
           label="学号"
@@ -20,7 +20,7 @@
         />
 
         <van-field
-          value="{{ password }}"
+          model:value="{{ password }}"
           type="password"
           label="密码"
           placeholder="请输入密码"
@@ -31,10 +31,9 @@
         
       </van-cell-group>
       <debounce-button
-          btnValue="登录"
           customStyle="width:100%;border-radius:12rpx;margin-top:20rpx;"
-          bind:loginClick="loginClick"
-        ></debounce-button>
+          bind:debouncetap="loginClick" 
+        >登录</debounce-button>
     </view>
     <!-- <van-divider /> -->
   </view>

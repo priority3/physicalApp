@@ -4,7 +4,8 @@
     <view class="user-info-box">
       <!-- 只做展示使用得头像和昵称 -->
       <view  class="user-avatar">
-        <open-data type="userAvatarUrl" ></open-data>
+        <image wx-if="{{avatarImg}}" src="{{avatarImg}}" mode="scaleToFill"></image>
+        <open-data wx:else type="userAvatarUrl" ></open-data>
       </view>
       <open-data type="userNickName" class="user-name"></open-data>
       <text>一些签名</text>

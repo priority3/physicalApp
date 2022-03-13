@@ -1,44 +1,67 @@
 <!--pages/user/user-info/user-info.wxml-->
-<view>
+<view class="userinfo-container">
+  <view class="userinfo-box">
+    <view class="user-avatar">
+      <image wx-if="{{avatarImg}}" src="{{avatarImg}}" mode="scaleToFill"></image>
+      <open-data wx:else type="userAvatarUrl" ></open-data>
+      
+    </view>
+    <debounce-button type="primary" customStyle="border-radius:10rpx;height:80rpx" bind:debouncetap="selectAvatar" >更换头像</debounce-button>
+  </view>
   <van-cell-group>
     <van-field
-      value="{{ username }}"
-      required
+      value="{{ mockData.username }}"
+      left-icon="friends-o"
       clearable
       label="姓名"
       icon="question-o"
       placeholder="请输入用户名"
       bind:click-icon="onClickIcon"
+      disabled="{{isDisabled}}"
     />
 
     <van-field
-      value="{{ password }}"
+      value="{{ mockData.userid }}"
+      left-icon="cluster-o"
       label="学号"
       placeholder="请输入学号"
-      required
+      clearable
+      disabled="{{isDisabled}}"
     />
     <van-field
-      value="{{ password }}"
+      value="{{ mockData.tel }}"
+      left-icon="phone-o"
+      label="电话号码"
+      placeholder="请输入号码"
+      clearable
+      disabled="{{isDisabled}}"
+    />
+    <van-field
+      value="{{ mockData.grade }}"
+      left-icon="manager-o"
       label="年级"
       placeholder="请选择年级"
       icon="arrow-down"
-      required
+      readonly
       bind:click-icon="selectGrade"
+      disabled="{{isDisabled}}"
     />
-    <van-picker columns="{{ columns }}" bind:change="onChange" />
     <van-field
-      value="{{ password }}"
+      value="{{ mockData.major }}"
+      left-icon="user-o"
       label="学院"
       placeholder="请选择学院"
+      readonly
       icon="arrow-down"
       bind:click-icon="selectMajor"
-      required
+      disabled="{{isDisabled}}"
     />
     <van-field
       value="{{ password }}"
       label="专业"
       placeholder="请输入专业"
-      required
+      clearable
+      disabled="{{isDisabled}}"
     />
     
     <van-field
@@ -46,14 +69,21 @@
       type="password"
       label="密码"
       placeholder="请输入密码"
-      required
+      disabled="{{isDisabled}}"
     />
-    <van-field
-      value="{{ password }}"
-      type="password"
-      label="密码"
-      placeholder="请输入密码"
-      required
-    />
+    
+    <van-popup show="{{ popShow }}" bind:close="onClose" position="bottom" custom-style="height:50%;">
+      <van-picker columns="{{ selectColumns }}" show-toolbar  
+      title="{{selectTile}}" bind:confirm="onConfirm"  />
+    </van-popup>
   </van-cell-group>
+  <view class="btn-box">
+    <debounce-button 
+    customStyle="width:100%;margin:10rpx 0; border-radius: 20rpx" bind:debouncetap="editAndSave" 
+    type="{{btnTypeInfo}}" 
+    isLoading="{{btnLoading}}"
+    >
+      {{editText}}
+    </debounce-button>
+  </view>
 </view>

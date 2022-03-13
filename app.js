@@ -1,6 +1,8 @@
 // app.js
 
 import router from "./router/router"
+import keys from "./config/keys"
+import {getStorageItem,setStorageItem,removeStorageItem} from "./utils/util"
 App({
   onLaunch() {
     // // 展示本地存储能力
@@ -31,6 +33,13 @@ App({
 
     // 增加路由守卫
     wx.router = router
+    // 添加常用变量
+    wx.KEYS = keys
+
+    // 存储
+    wx.getStorageItem = getStorageItem
+    wx.setStorageItem = setStorageItem
+    wx.removeStorageItem = removeStorageItem
   },
   globalData: {
     custom: '',

@@ -3,8 +3,6 @@
     "pages/login/login",
     "pages/index/index",
     "pages/user/user",
-    "pages/user/userinfo/userinfo",
-    "pages/user/free-appint/free-appint",
     "pages/user/free-appiont/free-appiont",
     "pages/user/user-info/user-info"
   ],

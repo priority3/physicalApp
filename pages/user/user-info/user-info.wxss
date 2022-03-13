@@ -1,1 +1,27 @@
 /* pages/user/user-info/user-info.wxss */
+.btn-box{
+  width: 90%;
+  margin: 0 auto;
+}
+
+.userinfo-box{
+  border-bottom: 4rpx solid;
+  border-image: linear-gradient(to right, #418fe9,#fff, #7aef57) 20 30 round;
+  height: 200rpx;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.user-avatar{
+  width: 150rpx;
+  height: 150rpx;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 2px solid rgb(255, 255, 255);  
+}
+
+.user-avatar image{
+  height: 100%;
+  width: 100%;
+}

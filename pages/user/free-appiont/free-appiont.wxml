@@ -1,2 +1,4 @@
 <!--pages/user/free-appiont/free-appiont.wxml-->
-<text>pages/user/free-appiont/free-appiont.wxml</text>
+<view>
+  免费预约
+</view>

@@ -31,7 +31,7 @@ const push = (url,params,events) => {
  * @param {参数} params 
  * @param {事件} events 
  */
-const replace = (url,params,events) => {
+const replace = (url,params) => {
   let query = ""
   for (const key in params) {
     // 防止hasOwnProperty覆盖
@@ -39,17 +39,17 @@ const replace = (url,params,events) => {
       const element = params[key]
       query += `${key}=${element}&`
     }
-    wx.redirectTo({
-      url: url+`?${query}`,
-      events,
-      success(res){
-        console.log(res);
-      },
-      fail(err){
-        console.log(err);
-      }
-    })
   }
+  wx.redirectTo({
+    url: url+`?${query}`,
+    success(res){
+      console.log(res);
+    },
+    fail(err){
+      console.log(err);
+    }
+  })
+  
 }
 
 /**
