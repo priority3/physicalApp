@@ -4,8 +4,8 @@
   <text>测试信息</text>
   <ward-card wx:if="{{isLoading}}"> </ward-card>
   <block wx:else>
-    <phy-card  bind:appiontInfo="clickAppoint" isAppintment="{{isAppintment}}"></phy-card>
-    <phy-card ></phy-card>
+    <phy-card  bind:appiontInfo="clickAppoint" isAppintment="{{isAppintment}}" customStyle="margin-top:20rpx;"></phy-card>
+    <phy-card customStyle="margin-top:20rpx;"></phy-card>
     
   </block>
   

@@ -1,5 +1,6 @@
 
 /**
+ * 保留当前页面，跳转到应用内的某个页面。但是不能跳到 tabbar 页面。使用 wx.navigateBack 可以返回到原页面。小程序中页面栈最多十层。
  * 对 wx.navigateTo 封装
  * @param {跳转路由} url  
  * @param {参数} params 
@@ -26,6 +27,7 @@ const push = (url,params,events) => {
   }
 }
 /**
+ * 关闭当前页面，跳转到应用内的某个页面。但是不允许跳转到 tabbar 页面。
  * 对wxwx.redirectTo 得封装
  * @param {路由} url 
  * @param {参数} params 
@@ -69,6 +71,7 @@ const pop = (num) => {
 }
 
 /**
+ * 关闭所有页面，打开到应用内的某个页面
  * 对relaunch 封装
  * @param {路由} url 
  */

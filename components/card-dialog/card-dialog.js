@@ -1,23 +1,13 @@
 // components/card-dialog/card-dialog.js
-Component({
-  /**
-   * 组件的属性列表
-   */
-  properties: {
+import {profileComponent} from "../../utils/util"
+profileComponent({
+  props:{
 
   },
-
-  /**
-   * 组件的初始数据
-   */
-  data: {
+  data:{
 
   },
-
-  /**
-   * 组件的方法列表
-   */
-  methods: {
-
+  created(){
+    console.log("初始化了该组件！！");
   }
 })

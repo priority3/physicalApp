@@ -77,6 +77,12 @@
   </view> -->
   <van-notify id="van-notify" />
 
+  <!-- 退出登录按钮 -->
+  <view style="width: 80%; margin: 0 auto;">
+    <debounce-button type="danger" customStyle="width:100%;border-radius:10rpx;margin-top:20rpx" bind:debouncetap="handleLoginout">退出登录</debounce-button>
+  </view>
+
+
   <!-- 更换密码 -->
   <van-dialog
     use-slot
@@ -117,3 +123,5 @@
     </van-cell-group>
   </van-dialog>
 </view>
+
+

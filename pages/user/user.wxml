@@ -44,19 +44,6 @@
       link-type="navigateTo"
       url="/pages/user/info-appiont/info-appiont"
     />
-    <van-cell
-      icon="failure"
-      is-link
-      title="隐私数据"
-      link-type="navigateTo"
-      url="/pages/dashboard/index"
-    />
-    <van-cell
-      icon="comment-o"
-      is-link
-      title="意见反馈"
-      link-type="navigateTo"
-      url="/pages/dashboard/index"
-    />
+    
   </view>
 </view>

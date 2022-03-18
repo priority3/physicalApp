@@ -74,6 +74,12 @@ Page({
     }
     console.log("ok 更改密码");
   },
+
+  // 退出登录
+  handleLoginout(){
+    wx.clearStorageSync()
+    wx.router.reLaunch('/pages/login/login')
+  },
   /**
    * 生命周期函数--监听页面加载
    */

@@ -32,7 +32,6 @@ function HttpInstance (url,data,method,option){
          ...header
        },
        success(res){
-        console.log(res);
         if(res.statusCode !== 200){
           return reject(res.data)
         }

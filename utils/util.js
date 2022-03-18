@@ -5,3 +5,6 @@ export { Notify,Dialog }; // vant 的弹出窗
 export {getStorageItem,setStorageItem,removeStorageItem} from "./store"
 // 登录校验
 export {idReg,pasReg} from "./regUtil"
+
+// 重写的组件构造 ---》 vue
+export {profileComponent} from "./profileComponent"

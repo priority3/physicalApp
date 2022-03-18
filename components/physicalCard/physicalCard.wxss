@@ -56,10 +56,12 @@
   width: 50%;
   justify-content: space-between;
   align-items: center;
+  gap: 10rpx;
+}
+.user-text{
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
-  gap: 10rpx;
 }
 
 .info-avator{
