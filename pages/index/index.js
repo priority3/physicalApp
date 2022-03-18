@@ -6,8 +6,8 @@ Page({
   data: {
     // 加载状态
     isLoading:true,
-    // dialog 显示状态
-    isShow:false 
+    // 是否预约？？？
+    isAppintment:false
   },
   
   onShow() {
@@ -22,27 +22,27 @@ Page({
       isLoading:true
     })
   },
-  // 显示详细信息
-  showCardDetail(){
-    this.setData({
-      isShow:true
-    })
-  },
-  // 关掉dialog弹窗
-  onClose(){
-    this.setData({
-      isShow:false
-    })
-  },
+  
   getUserProfile(e) {
     
     
       
   },
-  showCardDetail(){
-    console.log("detail card show");
-    this.setData({
-      isShow:true
+  // 点击卡片预约
+  clickAppoint(){
+    wx.showModal({
+      title: '预约',
+      content:"是否确定预约？预约成功后若修改请联系管理员！",
+      success:(res)=>{
+        if(res.confirm){
+          this.setData({
+            isAppintment:true
+          })
+        }
+      },
+      fail(err){
+        console.log(err);
+      }
     })
   },
   getUserInfo(e) {

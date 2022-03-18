@@ -4,28 +4,9 @@
   <text>测试信息</text>
   <ward-card wx:if="{{isLoading}}"> </ward-card>
   <block wx:else>
-    <phy-card bindtap="showCardDetail"></phy-card>
-    <phy-card></phy-card>
-    <van-dialog
-      use-slot
-      title="相关特测信息"
-      show="{{ isShow }}"
-      show-cancel-button
-      confirm-button-open-type="getUserInfo"
-      bind:close="onClose"
-      bind:getuserinfo="getUserInfo"
-      confirm-button-text="预约"
-      confirm-button-color="#1989fa"
-    >
-      <van-cell-group>
-        <van-cell title="日期" value="7月9日-7月29日" />
-        <van-cell title="具体时间" value="13:00-17:00" />
-        <van-cell title="地点" value="临江体育场" />
-        <van-cell title="预约人数" value="19/30" />
-        <van-cell title="负责老师" value="负责人" />
-        <van-cell title="相关信息说明" required value="阿达判断奇偶安排京东大家欧普到家" />
-      </van-cell-group>
-    </van-dialog>
+    <phy-card  bind:appiontInfo="clickAppoint" isAppintment="{{isAppintment}}"></phy-card>
+    <phy-card ></phy-card>
+    
   </block>
   
   

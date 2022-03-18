@@ -1,4 +1,16 @@
 <!--pages/user/free-appiont/free-appiont.wxml-->
 <view class="appiont-container">
-  <textarea class="text-box" placeholder="申请理由..." 	placeholder-style="font-size:30rpx;"></textarea>
+  <textarea class="text-box" placeholder="申请理由..." 	placeholder-style="font-size:30rpx;" focus bindblur="colInfo"></textarea>
+
+  <view class="img-title">添加图片说明</view>
+  <van-uploader multiple file-list="{{ fileList }}" bind:after-read="afterRead" bind:delete="deleteFile" image-fit="scaleToFill"
+  max-count="8"
+  />
+  <!-- 确认窗口 -->
+  <view style="width: 80%;margin: 0 auto;">
+    <debounce-button customStyle="width:100%;margin-top: 20rpx; border-radius:10rpx" bind:debouncetap="submit">提交</debounce-button>
+  </view>
 </view>
+
+<van-dialog id="van-dialog" />
+

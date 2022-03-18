@@ -1,0 +1,9 @@
+<!--pages/user/info-appiont/info-appiont.wxml-->
+
+<view>
+  <van-dropdown-menu active-color="#1989fa">
+    <van-dropdown-item value="{{0}}" options="{{ option1 }}" bind:change="changeShowInfo" />
+  </van-dropdown-menu>
+
+  <physical-card isAppintment="{{true}}" customStyle='background-color:#e7f5ff;margin-top:20rpx;'></physical-card>
+</view>

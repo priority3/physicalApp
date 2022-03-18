@@ -2,10 +2,9 @@
   "usingComponents": {
     "van-divider": "/miniprogram_npm/@vant/weapp/divider/index",
     "phy-card":"/components/physicalCard/physicalCard",
-    "ward-card":"/components/wardingCard/wardingCard",
-    "van-dialog": "/miniprogram_npm/@vant/weapp/dialog/index",
-    "van-cell": "/miniprogram_npm/@vant/weapp/cell/index",
-    "van-cell-group": "/miniprogram_npm/@vant/weapp/cell-group/index"
+    "ward-card":"/components/wardingCard/wardingCard"
+    
+    
   },
   "enablePullDownRefresh":true,
   "backgroundTextStyle":"dark"

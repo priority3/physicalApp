@@ -8,3 +8,9 @@
   height: 300rpx;
   background-color: #fff;
 }
+
+.img-title{
+  font-size: 28rpx;
+  margin: 20rpx 0;
+  color: rgb(141, 141, 141);
+}

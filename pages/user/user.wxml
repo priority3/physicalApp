@@ -42,7 +42,7 @@
       is-link
       title="预约信息"
       link-type="navigateTo"
-      url="/pages/dashboard/index"
+      url="/pages/user/info-appiont/info-appiont"
     />
     <van-cell
       icon="failure"

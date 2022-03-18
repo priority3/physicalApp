@@ -8,6 +8,10 @@ Component({
     isAppintment:{
       type:Boolean,
       value:false
+    },
+    customStyle:{
+      type:String,
+      value:''
     }
   },
 
@@ -15,33 +19,40 @@ Component({
    * 组件的初始数据
    */
   data: {
-
+    isShow:false
   },
 
   /**
    * 组件的方法列表
    */
   methods: {
-    showDetail(){
+    // 体测预约点击 
+    btnClick(){
       // this.triggerEvent("")
-      console.log("预约体测点击 physicalcard 24");
-      wx.showModal({
-        title: '预约',
-        content:"是否确定预约？预约成功后若修改请联系管理员！",
-        success:(res)=>{
-          console.log(res);
-          if(res.confirm){
-            this.setData({
-              isAppintment:true
-            })
-          }
-        },
-        fail(err){
-          console.log(err);
-        }
+      if(this.properties.isAppintment){
+        return
+      }else{
+        console.log("预约体测点击 physicalcard 24");
+        this.triggerEvent("appiontInfo")
+        
+      }
+    },
+    // 展示详细信息
+    showDetail(){
+      this.setData({
+        isShow:true
       })
+    },
+    confirmClick(){
+      console.log("@");
+      if(this.properties.isAppintment){
+        return
+      }
+      this.triggerEvent("appiontInfo")
     }
+  
   },
+  
   // 支持多个slot
   options:{
     multipleSlots:true

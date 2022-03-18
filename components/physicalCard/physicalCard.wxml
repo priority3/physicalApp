@@ -1,40 +1,62 @@
 <!--components/physicalCard/physicalCard.wxml-->
-<view class="card-header">
-  <view class="card-title">
-    <van-tag type="success">标签</van-tag>
-    <view class="title-header">相关体测信息</view>
-  </view>
-  <view class="card-midle">
-    <view class="cont-info">
-      <view class="cont-item">
-        <van-icon name="todo-list-o" />
-        <text class="cont-text">7.9-7.29</text>
+<view class="card-header" style="{{customStyle}}">
+  <view capture-catch:tap="showDetail">
+    <view class="card-title">
+      <van-tag type="success">标签</van-tag>
+      <view class="title-header">相关体测信息</view>
+    </view>
+    <view class="card-midle">
+      <view class="cont-info">
+        <view class="cont-item">
+          <van-icon name="todo-list-o" />
+          <text class="cont-text">7.9-7.29</text>
+        </view>
+        <view class="cont-item">
+          <van-icon name="clock-o" />
+          <text class="cont-text">13:00-17:00</text>
+        </view>
+        <view class="cont-item">
+          <van-icon name="home-o" />
+          <text class="cont-text">临江体育场临江体育场临江体育场</text>
+        </view>
+        <view class="cont-item">
+          <van-icon name="user-o" />
+          <text class="cont-text">19/30</text>
+        </view>
       </view>
-      <view class="cont-item">
-        <van-icon name="clock-o" />
-        <text class="cont-text">13:00-17:00</text>
-      </view>
-      <view class="cont-item">
-        <van-icon name="home-o" />
-        <text class="cont-text">临江体育场临江体育场临江体育场</text>
-      </view>
-      <view class="cont-item">
-        <van-icon name="user-o" />
-        <text class="cont-text">19/30</text>
+      <view class="cont-img-box">
+        <image src="https://i.bmp.ovh/imgs/2022/03/5ae01a54dac2d0c7.png" alt="" class="cont-img"/>
       </view>
     </view>
-    <view class="cont-img-box">
-      <image src="https://i.bmp.ovh/imgs/2022/03/5ae01a54dac2d0c7.png" alt="" class="cont-img"/>
-    </view>
+    <van-divider />
   </view>
-  <van-divider />
   <view class="user-info">
     <view class="user-box">
       <image src="https://i.bmp.ovh/imgs/2022/03/a61e4b55483e255f.png" alt="" class="info-avator"/>
       <text class="user-text">负责人负责人负责人负责人负责人</text>
     </view>
     <view class="info-status">
-      <van-button type="info" size="small" capture-catch:tap="showDetail" disabled="{{isAppintment}}">{{isAppintment ? '已预约':'预约体测' }}</van-button>
+      <van-button type="info" size="small" capture-catch:tap="btnClick" disabled="{{isAppintment}}">{{isAppintment ? '已预约':'预约体测' }}</van-button>
     </view>
   </view>
 </view>
+
+<!-- 详细信息 -->
+<van-dialog
+  use-slot
+  title="相关特测信息"
+  show="{{ isShow }}"
+  show-cancel-button
+  bind:confirm="confirmClick"
+  confirm-button-text="{{isAppintment ? '确定' : '预约'}}"
+  confirm-button-color="#1989fa"
+>
+  <van-cell-group>
+    <van-cell title="日期" value="7月9日-7月29日" />
+    <van-cell title="具体时间" value="13:00-17:00" />
+    <van-cell title="地点" value="临江体育场" />
+    <van-cell title="预约人数" value="19/30" />
+    <van-cell title="负责老师" value="负责人" />
+    <van-cell title="相关信息说明" required value="阿达判断奇偶安排京东大家欧普到家" />
+  </van-cell-group>
+</van-dialog>
