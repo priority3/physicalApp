@@ -1,8 +1,7 @@
 // pages/login/login.js
-
 import {postLogin} from "../../services/logionRequest"
 
-import {idReg} from "../../utils/util"
+import {idReg,Notify} from "../../utils/util"
 const app = getApp()
 Page({
 
@@ -13,6 +12,14 @@ Page({
     userName:"",
     password:"",
     isLoading:false
+  },
+  handleOwnNotify(message, type = "warning") {
+    // let top = app.globalData.statusBarHeight;
+    Notify({
+      type,
+      message,
+      // top
+    });
   },
   
   loginClick(){
@@ -30,11 +37,16 @@ Page({
         this.handleRedirect()
       }).catch(err => {
         console.log(err,"login");
+        this.handleOwnNotify("登录失败，请重试🙄")
       }).finally(() => {
         this.setData({
           isLoading:false
         })
       })
+    }else{
+      // 抛出 提出校验不通过
+      this.handleOwnNotify("账号不能为空🙄")
+
     }
     // wx.router.switchTab('/pages/index/index')
   },

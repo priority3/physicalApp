@@ -2,7 +2,8 @@
   "usingComponents": {
     "van-field": "/miniprogram_npm/@vant/weapp/field/index",
     "van-divider": "/miniprogram_npm/@vant/weapp/divider/index",
-    "debounce-button":"/components/deBounceButton/deBounceButton"
+    "debounce-button":"/components/deBounceButton/deBounceButton",
+    "van-notify": "/miniprogram_npm/@vant/weapp/notify"
   },
   "navigationBarTitleText": "登录"
 }

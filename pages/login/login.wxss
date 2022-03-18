@@ -1,6 +1,8 @@
 /* pages/login/login.wxss */
 .liner-color{
-  background-image: linear-gradient(to bottom,#ffffff,rgba(175,220,245,0.36),#ffffff)
+  background-image: linear-gradient(to bottom,#ffffff,rgba(175,220,245,0.36),#ffffff);
+  height: 100vh;
+  
 }
 .login-container{
   width: 90%;

@@ -1,4 +1,4 @@
 <!--pages/user/free-appiont/free-appiont.wxml-->
-<view>
-  免费预约
+<view class="appiont-container">
+  <textarea class="text-box" placeholder="申请理由..." 	placeholder-style="font-size:30rpx;"></textarea>
 </view>

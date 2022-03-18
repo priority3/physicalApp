@@ -1,2 +1,6 @@
+import Notify from "../miniprogram_npm/@vant/weapp/notify/notify";
+export { Notify }; // vant 的弹出窗
+// 重写存储
 export {getStorageItem,setStorageItem,removeStorageItem} from "./store"
-export {idReg} from "./regUtil"
+// 登录校验
+export {idReg,pasReg} from "./regUtil"

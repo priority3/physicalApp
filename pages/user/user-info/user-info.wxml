@@ -1,4 +1,6 @@
 <!--pages/user/user-info/user-info.wxml-->
+<wxs module="utils" src="./user-info.wxs"></wxs>
+
 <view class="userinfo-container">
   <view class="userinfo-box">
     <view class="user-avatar">
@@ -6,78 +8,65 @@
       <open-data wx:else type="userAvatarUrl" ></open-data>
       
     </view>
-    <debounce-button type="primary" customStyle="border-radius:10rpx;height:80rpx" bind:debouncetap="selectAvatar" >更换头像</debounce-button>
+    <view class="fun-btn">
+      <debounce-button type="primary" customStyle="border-radius:10rpx;height:60rpx" bind:debouncetap="selectAvatar" >更换头像</debounce-button>
+      <debounce-button type="info" customStyle="border-radius:10rpx;height:60rpx" bind:debouncetap="changePassword" >更换密码</debounce-button>
+    </view>
   </view>
   <van-cell-group>
     <van-field
-      value="{{ mockData.username }}"
+      value="{{ list.name }}"
       left-icon="friends-o"
       clearable
       label="姓名"
-      icon="question-o"
-      placeholder="请输入用户名"
-      bind:click-icon="onClickIcon"
-      disabled="{{isDisabled}}"
+      placeholder="姓名"
+      disabled="{{true}}"
     />
 
     <van-field
-      value="{{ mockData.userid }}"
+      value="{{ list.infoId }}"
       left-icon="cluster-o"
       label="学号"
-      placeholder="请输入学号"
+      placeholder="学号"
       clearable
-      disabled="{{isDisabled}}"
+      disabled="{{true}}"
     />
     <van-field
-      value="{{ mockData.tel }}"
+      value="{{ list.schoolClass }}"
       left-icon="phone-o"
-      label="电话号码"
-      placeholder="请输入号码"
+      label="班级"
+      placeholder="号码"
       clearable
-      disabled="{{isDisabled}}"
+      disabled="{{true}}"
     />
+    
     <van-field
-      value="{{ mockData.grade }}"
+      value="{{ list.grade }}"
       left-icon="manager-o"
       label="年级"
-      placeholder="请选择年级"
-      icon="arrow-down"
+      placeholder="年级"
       readonly
-      bind:click-icon="selectGrade"
-      disabled="{{isDisabled}}"
+      
+      disabled="{{true}}"
     />
     <van-field
-      value="{{ mockData.major }}"
+      value="{{ list.college }}"
       left-icon="user-o"
       label="学院"
-      placeholder="请选择学院"
+      placeholder="学院"
       readonly
-      icon="arrow-down"
-      bind:click-icon="selectMajor"
-      disabled="{{isDisabled}}"
+      disabled="{{true}}"
     />
     <van-field
-      value="{{ password }}"
+      value="{{ list.specialty }}"
+      left-icon="manager-o"
       label="专业"
-      placeholder="请输入专业"
+      placeholder="专业"
       clearable
-      disabled="{{isDisabled}}"
+      disabled="{{true}}"
     />
-    
-    <van-field
-      value="{{ password }}"
-      type="password"
-      label="密码"
-      placeholder="请输入密码"
-      disabled="{{isDisabled}}"
-    />
-    
-    <van-popup show="{{ popShow }}" bind:close="onClose" position="bottom" custom-style="height:50%;">
-      <van-picker columns="{{ selectColumns }}" show-toolbar  
-      title="{{selectTile}}" bind:confirm="onConfirm"  />
-    </van-popup>
   </van-cell-group>
-  <view class="btn-box">
+  <!-- <view class="btn-box">
     <debounce-button 
     customStyle="width:100%;margin:10rpx 0; border-radius: 20rpx" bind:debouncetap="editAndSave" 
     type="{{btnTypeInfo}}" 
@@ -85,5 +74,46 @@
     >
       {{editText}}
     </debounce-button>
-  </view>
+  </view> -->
+  <van-notify id="van-notify" />
+
+  <!-- 更换密码 -->
+  <van-dialog
+    use-slot
+    title="更换密码"
+    show="{{ dialogShow }}"
+    show-cancel-button
+    bind:close="onClose"
+    bind:confirm="fixedPassword"
+  >
+    <van-cell-group>
+      <van-field
+        model:value="{{ oldPassword }}"
+        type="password"
+        required
+        clearable
+        label="旧密码"
+        placeholder="请输入密码"
+        bind:click-icon="onClickIcon"
+      />
+
+      <van-field
+        model:value="{{ newPassword }}"
+        type="password"
+        clearable
+        label="新密码"
+        placeholder="包含数字和英文，长度6-20"
+        required
+      />
+      <van-field
+        model:value="{{ rePassword }}"
+        clearable
+        type="password"
+        label="确认密码"
+        placeholder="请确认密码"
+        error-message="{{utils.showErrMessage(newPassword,rePassword)}}"
+        required
+      />
+    </van-cell-group>
+  </van-dialog>
 </view>

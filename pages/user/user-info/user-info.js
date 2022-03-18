@@ -1,75 +1,45 @@
 // pages/user/user-info/user-info.js
+import {getUserInfo} from "../../../services/logionRequest"
+
+// Notify弹出
+import {Notify,pasReg} from "../../../utils/util"
+
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    mockData:{
-      username:"张三",
-      userid:"13131",
-      tel:"1313",
-      grade:"2018",
-      major:"jisuanji"
+    list:{
+      
     },
-    selectColumns: [],
-    selectTile:"",
-    gradeColumns:["2018级","2019级","2020级","2021级"],
-    majorColumns:["计算机与软件工程学院","材料学院","美术学院","体育学院","经济学院"],
-    majorTitle:"请选择学院",
-    popShow:false,
-    isDisabled:true,
-    editText:"编辑",
-    btnTypeInfo:"info",
+    oldPassword:'',
+    newPassword:'',
+    rePassword:'',
     btnLoading:false,
-    avatarImg:""
+    avatarImg:"",
+    dialogShow:false,
+    isSubmit:true,
+    isMessage:false
   },
-  // 弹出层选择年级
-  selectGrade(){
-    const {gradeColumns,isDisabled} = this.data
-    if(isDisabled){
-      return
-    }
-    this.setData(({
-      popShow:true,
-      selectColumns:gradeColumns,
-      selectTile:"请选择年级"
-    }))
+  handleOwnNotify(message, type = "warning") {
+    // let top = app.globalData.statusBarHeight;
+    Notify({
+      type,
+      message,
+      // top
+    });
   },
-  // 弹出层选择学院
-  selectMajor(){
-    const {majorColumns,isDisabled} = this.data
-    if(isDisabled){
-      return
-    }
-    this.setData(({
-      popShow:true,
-      selectColumns:majorColumns,
-      selectTile:"请选择学院"
-    }))
-  },
+  
+  
   // 关闭弹出层
   onClose() {
     this.setData({ 
       popShow: false 
     });
   },
-  onConfirm(e){
-    // 逻辑处理
-    const {selectTile,mockData} = this.data
-    if(selectTile === "请选择学院"){
-      const value = e.dttail
-    }
-    this.onClose()
-  },
-  editAndSave(){
-    const {isDisabled} = this.data
-    this.setData({
-      isDisabled:!isDisabled,
-      editText:isDisabled?"保存":"编辑",
-      btnTypeInfo:isDisabled?"danger":"info",
-    }) 
-  },
+  
+ 
   // 更换头像
   selectAvatar(){
     wx.chooseImage({
@@ -89,10 +59,38 @@ Page({
       }
     })
   },
+  // 点击弹出 更换密码 弹窗
+  changePassword(){
+    this.setData({
+      dialogShow:true
+    })
+  },
+  
+  // 修改密码 确定之后回调
+  fixedPassword(){
+    const {newPassword,rePassword} = this.data
+    if(newPassword !== rePassword){
+      return
+    }
+    console.log("ok 更改密码");
+  },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    getUserInfo().then((res) => {
+      if(res.statusCode === 200){
+        this.setData({
+          list:res.data
+        })
+      }else{
+        this.handleOwnNotify('用户信息获取失败🙄')
+      }
+    }).catch((err) => {
+      this.handleOwnNotify('用户信息获取失败🙄')
+      console.log(err);
+    })
+    
     
   },
 

@@ -26,7 +26,6 @@
           placeholder="请输入密码"
           required
           label-class="cus-text"
-
         />
         
       </van-cell-group>
@@ -37,6 +36,6 @@
     </view>
     <!-- <van-divider /> -->
   </view>
- 
+  <van-notify id="van-notify" />
 </view>
 </view>

@@ -6,7 +6,9 @@
     "debounce-button":"/components/deBounceButton/deBounceButton",
     "van-sticky": "/miniprogram_npm/@vant/weapp/sticky/index",
     "van-cell": "/miniprogram_npm/@vant/weapp/cell/index",
-    "van-cell-group": "/miniprogram_npm/@vant/weapp/cell-group/index"
+    "van-cell-group": "/miniprogram_npm/@vant/weapp/cell-group/index",
+    "van-notify": "/miniprogram_npm/@vant/weapp/notify",
+    "van-dialog": "/miniprogram_npm/@vant/weapp/dialog/index"
 
   },
   "navigationBarTitleText": "用户信息"

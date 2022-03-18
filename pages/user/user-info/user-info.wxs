@@ -1,0 +1,19 @@
+function showErrMessage (word,reword){
+  var mes = ''
+  if(word !== reword){
+    mes = '两次密码必须一致'
+  }
+  if(word.trim() === ''){
+    mes = '密码不能为空'
+  }
+  
+  // if(!reg.test(word)){
+  //   mes = '密码为6-20数字和英文'
+  // }
+  
+  return mes
+}
+
+module.exports = { 
+  showErrMessage:showErrMessage
+}
