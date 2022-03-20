@@ -2,6 +2,7 @@
 .home-box{
   background-image: linear-gradient(to bottom,#ffffff,rgba(175,220,245,0.36),#ffffff);
   padding:0 50rpx;
+  
 }
 
 .home-box .logo-img{

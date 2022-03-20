@@ -2,22 +2,22 @@
 <view class="card-header" style="{{customStyle}}">
   <view capture-catch:tap="showDetail">
     <view class="card-title">
-      <van-tag type="success">标签</van-tag>
-      <view class="title-header">相关体测信息</view>
+      <van-tag type="success">{{cardInfo.semester}}</van-tag>
+      <view class="title-header">{{cardInfo.name}}</view>
     </view>
     <view class="card-midle">
       <view class="cont-info">
         <view class="cont-item">
           <van-icon name="todo-list-o" />
-          <text class="cont-text">7.9-7.29</text>
+          <text class="cont-text">{{cardInfo.day}}</text>
         </view>
         <view class="cont-item">
           <van-icon name="clock-o" />
-          <text class="cont-text">13:00-17:00</text>
+          <text class="cont-text">{{cardInfo.hour}}</text>
         </view>
         <view class="cont-item">
           <van-icon name="home-o" />
-          <text class="cont-text">临江体育场临江体育场临江体育场</text>
+          <text class="cont-text">{{cardInfo.location}}</text>
         </view>
         <view class="cont-item">
           <van-icon name="user-o" />
@@ -33,10 +33,16 @@
   <view class="user-info">
     <view class="user-box">
       <image src="https://i.bmp.ovh/imgs/2022/03/a61e4b55483e255f.png" alt="" class="info-avator"/>
-      <text class="user-text">负责人负责人负责人负责人负责人</text>
+      <text class="user-text">{{cardInfo.teacherInfo.name}}</text>
     </view>
     <view class="info-status">
-      <van-button type="info" size="small" capture-catch:tap="btnClick" disabled="{{isAppintment}}">{{isAppintment ? '已预约':'预约体测' }}</van-button>
+      <van-button 
+      type="info" 
+      size="small" 
+      capture-catch:tap="btnClick" 
+      disabled="{{isAppintment}}" 
+      loading="{{btnLoading}}"
+      >{{isAppintment ? '已预约':'预约体测' }}</van-button>
     </view>
   </view>
 </view>
@@ -44,7 +50,7 @@
 <!-- 详细信息 -->
 <van-dialog
   use-slot
-  title="相关特测信息"
+  title="{{cardInfo.name}}"
   show="{{ isShow }}"
   show-cancel-button
   bind:confirm="confirmClick"
@@ -52,11 +58,11 @@
   confirm-button-color="#1989fa"
 >
   <van-cell-group>
-    <van-cell title="日期" value="7月9日-7月29日" />
-    <van-cell title="具体时间" value="13:00-17:00" />
-    <van-cell title="地点" value="临江体育场" />
+    <van-cell title="日期" value="{{cardInfo.name}}" />
+    <van-cell title="具体时间" value="{{cardInfo.day+' '+cardInfo.hour}}" />
+    <van-cell title="地点" value="{{cardInfo.location}}" />
     <van-cell title="预约人数" value="19/30" />
-    <van-cell title="负责老师" value="负责人" />
+    <van-cell title="负责老师" value="{{cardInfo.teacherInfo.name}}" />
     <van-cell title="相关信息说明" required value="阿达判断奇偶安排京东大家欧普到家" />
   </van-cell-group>
 </van-dialog>

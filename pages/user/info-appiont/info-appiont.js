@@ -1,4 +1,6 @@
 // pages/user/info-appiont/info-appiont.js
+import {getUsedAppiontInfo} from "../../../services/appiontList"
+import {handleOwnNotify} from "../../../utils/util"
 Page({
 
   /**
@@ -11,16 +13,51 @@ Page({
       { text: '大二学期', value: 2 },
       { text: '大三学期', value: 3 },
       { text: '大四学期', value: 4 }
-    ]
+    ],
+    dataList:[],
+    // 加载状态
+    isLoading:true,
+    // 数据是否为空
+    isInfo:false
   },
   changeShowInfo(e){
     let ind = e.detail
   },
+  // 获取列表数据
+  handleGetUsedInfo(){
+    this.setData({
+      isLoading:true,
+      isInfo:false
+    })
+    getUsedAppiontInfo().then((res) => {
+      // console.log(res);
+      if(res.code === 200){
+        this.setData({
+          dataList:res.data,
+          isLoading:false,
+          isInfo:res.data.length === 0
+        })
+      }else{
+        handleOwnNotify("获取列表数据失败🙄")
+        this.setData({
+          isLoading:false,
+          isInfo:true 
+        })
+      }
+    }).catch((err) => {
+      this.setData({
+        isLoading:false,
+        isInfo:true
+      })
+      handleOwnNotify("获取列表数据失败🙄")
+    })
+  },
+  
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    this.handleGetUsedInfo()
   },
 
   /**

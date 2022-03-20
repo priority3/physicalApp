@@ -1,6 +1,8 @@
 <!--components/wardingCard/wardingCard.wxml-->
 <view style="text-align: center;height: 100vh;">
   <image src="/assets/logo.png"></image>
-  <van-loading color="#1989fa" size="24px" wx:if="{{loading}}">加载中...</van-loading>
-  <text wx:else>暂无数据</text>
+  <van-loading color="#1989fa" size="24px" wx:if="{{isLoading}}">
+  </van-loading>
+  <slot></slot>
+  
 </view>

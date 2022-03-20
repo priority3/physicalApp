@@ -5,6 +5,15 @@
   <van-dropdown-menu active-color="#1989fa">
     <van-dropdown-item value="{{0}}" options="{{ option1 }}" bind:change="changeShowInfo" />
   </van-dropdown-menu>
-
-  <physical-card isAppintment="{{true}}" customStyle='background-color:#e7f5ff;margin:20rpx auto; width:90%'></physical-card>
+  <view style="padding: 0 50rpx;">
+    <ward-card wx:if="{{dataList.length === 0}}"  isLoading="{{isLoading}}" >
+      {{isInfo  ? "暂无数据" : "加载中..."}}
+    </ward-card>
+  </view>
+  
+  <block wx:for="{{dataList}}" wx:key="id">
+    <physical-card isAppintment="{{true}}" customStyle='background-color:#e7f5ff;margin:20rpx auto; width:90%'
+    cardInfo="{{item}}"></physical-card>
+  </block>
 </view>
+<van-notify id="van-notify" />

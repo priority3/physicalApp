@@ -20,7 +20,6 @@ function HttpInstance (url,data,method,option){
      ...data
    }
 
-   
    return new Promise((resolve,reject) => {
      wx.request({
        url: `${BASEURL}${url}`,
@@ -32,13 +31,17 @@ function HttpInstance (url,data,method,option){
          ...header
        },
        success(res){
-        if(res.statusCode !== 200){
-          return reject(res.data)
+        console.log(res);
+        // token过期处理
+        if(res.data.msg === '10001'){
+          // ?? 提示
+          wx.router.replace("/pages/login/login")
         }
+        
         return resolve(res.data)
        },
-       fail(err){
-         console.log(err,"http");
+       fail(){
+         const err = "出问题啦~，请检查网络后重试"
          return reject(err)
        }
      })

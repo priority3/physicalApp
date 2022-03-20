@@ -16,7 +16,7 @@
 .card-midle{
   margin-top: 30rpx;
   display: flex;
-  justify-content: start;
+  justify-content: space-between;
   align-items: center;
 }
 .cont-info{
@@ -38,6 +38,7 @@
   text-overflow: ellipsis;
 }
 .cont-img-box{
+  margin-left: 10rpx;
   width: 100%;
 }
 .cont-img{
@@ -54,9 +55,9 @@
 .user-box{
   display: flex;
   width: 50%;
-  justify-content: space-between;
+  justify-content: flex-start;
   align-items: center;
-  gap: 10rpx;
+  gap: 20rpx;
 }
 .user-text{
   overflow: hidden;

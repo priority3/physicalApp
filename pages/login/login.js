@@ -1,7 +1,7 @@
 // pages/login/login.js
 import {postLogin} from "../../services/logionRequest"
 
-import {idReg,Notify} from "../../utils/util"
+import {idReg,Notify,handleOwnNotify} from "../../utils/util"
 const app = getApp()
 Page({
 
@@ -13,14 +13,7 @@ Page({
     password:"",
     isLoading:false
   },
-  handleOwnNotify(message, type = "warning") {
-    // let top = app.globalData.statusBarHeight;
-    Notify({
-      type,
-      message,
-      // top
-    });
-  },
+  
   
   loginClick(){
     
@@ -31,13 +24,13 @@ Page({
         isLoading:true
       })
       return postLogin({userName,password}).then((res) => {
+        console.log(res.data);
         wx.setStorageItem({
           ...res.data
         })
         this.handleRedirect()
       }).catch(err => {
-        console.log(err,"login");
-        this.handleOwnNotify("登录失败，请重试🙄")
+        this.handleOwnNotify(err || "登录失败，请重试🙄")
       }).finally(() => {
         this.setData({
           isLoading:false

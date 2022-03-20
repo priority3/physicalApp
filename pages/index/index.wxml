@@ -2,12 +2,11 @@
   <image src="https://i.bmp.ovh/imgs/2022/03/553327bdd6266790.png" alt="" class="logo-img"/>
   <van-divider />
   <text>测试信息</text>
-  <ward-card wx:if="{{isLoading}}"> </ward-card>
-  <block wx:else>
-    <phy-card  bind:appiontInfo="clickAppoint" isAppintment="{{isAppintment}}" customStyle="margin-top:20rpx;"></phy-card>
-    <phy-card customStyle="margin-top:20rpx;"></phy-card>
-    
+  <ward-card wx:if="{{infoList.length === 0}}"  isLoading="{{isLoading}}" >
+      {{isInfo  ? "暂无数据" : "加载中..."}}
+  </ward-card>
+  <block wx:for="{{infoList}}" wx:key="id">
+    <phy-card  bind:appiontInfo="clickAppoint" index="{{item.id}}" customStyle="margin-top:20rpx;" cardInfo="{{item}}" btnLoading="{{btnLoading}}"></phy-card>
+    <!-- <phy-card customStyle="margin-top:20rpx;"></phy-card> -->
   </block>
-  
-  
 </view>

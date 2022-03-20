@@ -1,5 +1,6 @@
 import Notify from "../miniprogram_npm/@vant/weapp/notify/notify";
 import Dialog  from "../miniprogram_npm/@vant/weapp/dialog/dialog";
+
 export { Notify,Dialog }; // vant 的弹出窗
 // 重写存储
 export {getStorageItem,setStorageItem,removeStorageItem} from "./store"
@@ -8,3 +9,14 @@ export {idReg,pasReg} from "./regUtil"
 
 // 重写的组件构造 ---》 vue
 export {profileComponent} from "./profileComponent"
+
+// error 提示
+const handleOwnNotify = (message, type = "warning") => {
+  // let top = app.globalData.statusBarHeight;
+  Notify({
+    type,
+    message,
+    // top
+  });
+}
+export {handleOwnNotify}

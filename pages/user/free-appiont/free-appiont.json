@@ -3,6 +3,9 @@
     "van-field": "/miniprogram_npm/@vant/weapp/field/index",
     "debounce-button":"/components/deBounceButton/deBounceButton",
     "van-dialog": "/miniprogram_npm/@vant/weapp/dialog/index",
-    "van-uploader": "/miniprogram_npm/@vant/weapp/uploader/index"
+    "van-uploader": "/miniprogram_npm/@vant/weapp/uploader/index",
+    "van-dropdown-menu": "/miniprogram_npm/@vant/weapp/dropdown-menu/index",
+    "van-dropdown-item": "/miniprogram_npm/@vant/weapp/dropdown-item/index",
+    "van-notify": "/miniprogram_npm/@vant/weapp/notify"
   }
 }

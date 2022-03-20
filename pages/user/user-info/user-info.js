@@ -2,7 +2,7 @@
 import {getUserInfo} from "../../../services/logionRequest"
 
 // Notify弹出
-import {Notify,pasReg} from "../../../utils/util"
+import {handleOwnNotify,pasReg} from "../../../utils/util"
 
 Page({
 
@@ -22,14 +22,7 @@ Page({
     isSubmit:true,
     isMessage:false
   },
-  handleOwnNotify(message, type = "warning") {
-    // let top = app.globalData.statusBarHeight;
-    Notify({
-      type,
-      message,
-      // top
-    });
-  },
+  
   
   
   // 关闭弹出层
@@ -85,15 +78,16 @@ Page({
    */
   onLoad: function (options) {
     getUserInfo().then((res) => {
-      if(res.statusCode === 200){
+      if(res.code === 200){
         this.setData({
           list:res.data
         })
       }else{
-        this.handleOwnNotify('用户信息获取失败🙄')
+        console.log(res);
+        handleOwnNotify('用户信息获取失败🙄')
       }
     }).catch((err) => {
-      this.handleOwnNotify('用户信息获取失败🙄')
+      handleOwnNotify('用户信息获取失败🙄')
       console.log(err);
     })
     
