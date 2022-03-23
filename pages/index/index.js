@@ -10,42 +10,56 @@ Page({
     isLoading:true,
     // 预约加载状态
     btnLoading:false,
-    // 当前页数
-    current:1,
-    // 每一页显示的内容数
-    size:5,
+
+    pagination:{
+      // 当前页数 始终为1
+      current:1,
+      // 每一页显示的内容数
+      size:5,
+      // 总共的条数 
+      total:0
+    },
     // 列表数据
     infoList:[],
     // 列表是否数据为空
-    isInfo:false
+    isInfo:false,
+    // 下拉加载loading
+    bottomLoading:false
   },
   // 获取列表数据
-  handleGetInfoList(){
-    const {current,size} = this.data
+  handleGetInfoList(isRefresh = false){
+    const {current,size} = this.data.pagination
     const _this = this
     this.setData({
       isLoading:true,
       infoList:[],
       isInfo:false
-    })
+    }) 
     getAppiontList({current,size}).then((res) => {
       console.log(res,"res success");
-      const {records} = res.data
+      const {records,total,size} = res.data
       let isInfo = records.length === 0
       _this.setData({
         infoList:records,
         isLoading:false,
-        isInfo
+        isInfo,
+        ['pagination.total']:total,
+        ['pagination.size']:size,
+        bottomLoading:false
       })
     }).catch((err) => {
       handleOwnNotify( err || "出错啦~")
       _this.setData({
         isLoading:false, 
-        isInfo:true
+        isInfo:true,
+        bottomLoading:false
       })
       console.log(err);
     }).finally(() => {
-    
+      // 停止刷新
+      if(isRefresh){
+        wx.stopPullDownRefresh()
+      }
     })
   },
 
@@ -76,6 +90,8 @@ Page({
               })
               // 重新获取列表信息
               getAppiontList()
+            }else if(res.code === 500){
+              handleOwnNotify("本学期已经预约🙄")
             }else{
               handleOwnNotify("预约失败🙄")
             }
@@ -94,10 +110,26 @@ Page({
   },
   // 监听下拉刷新
   onPullDownRefresh(){
-    this.handleGetInfoList()
+    // 初始化分页数据
+    this.setData({
+      pagination:{
+        current:1,
+        size:5,
+        total:0
+      }
+    })
+
+    this.handleGetInfoList(true)
   },
   // 监听下拉加载
   onReachBottom(){
     console.log("下拉加载");
+    let {size} = this.data.pagination
+    size *= 2
+    this.setData({
+      ['pagination.size']:size,
+      bottomLoading:true
+    })
+    this.handleGetInfoList()
   }
 })

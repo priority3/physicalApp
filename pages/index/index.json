@@ -2,11 +2,15 @@
   "usingComponents": {
     "van-divider": "/miniprogram_npm/@vant/weapp/divider/index",
     "phy-card":"/components/physicalCard/physicalCard",
-    "ward-card":"/components/wardingCard/wardingCard"
+    "ward-card":"/components/wardingCard/wardingCard",
+    "van-notify": "/miniprogram_npm/@vant/weapp/notify",
+    "van-tag": "/miniprogram_npm/@vant/weapp/tag/index",
+
+    "van-loading": "/miniprogram_npm/@vant/weapp/loading/index"
     
     
   },
   "enablePullDownRefresh":true,
-  "backgroundTextStyle":"dark"
-  
+  "backgroundTextStyle":"dark",
+  "onReachBottomDistance":-10
 }

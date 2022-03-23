@@ -21,7 +21,7 @@
         </view>
         <view class="cont-item">
           <van-icon name="user-o" />
-          <text class="cont-text">19/30</text>
+          <text class="cont-text">{{cardInfo.orderNum}}/{{cardInfo.store}}</text>
         </view>
       </view>
       <view class="cont-img-box">
@@ -61,7 +61,7 @@
     <van-cell title="日期" value="{{cardInfo.name}}" />
     <van-cell title="具体时间" value="{{cardInfo.day+' '+cardInfo.hour}}" />
     <van-cell title="地点" value="{{cardInfo.location}}" />
-    <van-cell title="预约人数" value="19/30" />
+    <van-cell title="预约人数" value="{{cardInfo.orderNum}}/{{cardInfo.store}}" />
     <van-cell title="负责老师" value="{{cardInfo.teacherInfo.name}}" />
     <van-cell title="相关信息说明" required value="阿达判断奇偶安排京东大家欧普到家" />
   </van-cell-group>

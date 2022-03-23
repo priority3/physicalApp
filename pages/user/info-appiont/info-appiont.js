@@ -30,7 +30,6 @@ Page({
       isInfo:false
     })
     getUsedAppiontInfo().then((res) => {
-      // console.log(res);
       if(res.code === 200){
         this.setData({
           dataList:res.data,

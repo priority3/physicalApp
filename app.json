@@ -12,6 +12,7 @@
     "navigationBarBackgroundColor": "#BEE8FF",
     "navigationBarTitleText": "体测预约",
     "navigationBarTextStyle": "black"
+    
   },
   "tabBar": {
     "borderStyle": "black",
