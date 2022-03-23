@@ -1,7 +1,7 @@
 // pages/login/login.js
 import {postLogin} from "../../services/logionRequest"
 
-import {idReg,Notify,handleOwnNotify} from "../../utils/util"
+import {idReg,handleOwnNotify} from "../../utils/util"
 const app = getApp()
 Page({
 
@@ -30,7 +30,8 @@ Page({
         })
         this.handleRedirect()
       }).catch(err => {
-        this.handleOwnNotify(err || "登录失败，请重试🙄")
+        
+        handleOwnNotify(err || "登录失败，请重试🙄")
       }).finally(() => {
         this.setData({
           isLoading:false
@@ -47,9 +48,15 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    
     let token = wx.getStorageItem("token")
     if(token){
       this.handleRedirect()
+      return
+    }
+    
+    if(options.msg){
+      handleOwnNotify(options.msg.replace('token','登录') || "登录失败，请重试🙄")
     }
   },
   handleRedirect() {

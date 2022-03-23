@@ -34,6 +34,7 @@ const push = (url,params,events) => {
  * @param {事件} events 
  */
 const replace = (url,params) => {
+  console.log(url);
   let query = ""
   for (const key in params) {
     // 防止hasOwnProperty覆盖

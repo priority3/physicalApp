@@ -33,11 +33,14 @@ function HttpInstance (url,data,method,option){
        success(res){
         console.log(res);
         // token过期处理
-        if(res.data.msg === '10001'){
-          // ?? 提示
-          wx.router.replace("/pages/login/login")
+        if(res.data.code === 10001){
+
+          wx.clearStorageSync()
+          wx.router.replace("/pages/login/login",{msg:res.data.msg})
+          reject(res.data)
         }
-        
+        // wx.router.replace("/pages/login/login")
+
         return resolve(res.data)
        },
        fail(){

@@ -6,7 +6,7 @@
   </ward-card>
   <view class="info-title">
     <text>测试信息</text>
-    <text>上拉刷新</text>
+    <text>下拉刷新</text>
     <view>
         一共 
       <van-tag type="{{pagination.total === 0 ? 'warning' : 'success'}}">{{pagination.total}}</van-tag> 
@@ -20,11 +20,16 @@
 
   <!-- 下拉加载更多 -->
   <view style="text-align: center; margin-top: 10px;">
-    <block wx:if="{{!bottonLoading}}">
-      下拉加载更多
+    <block wx:if="{{!isInfoFull}}">
+      <block wx:if="{{!bottonLoading}}">
+        下拉加载更多
+      </block>
+      <block wx:else="">
+        加载中...<van-loading color="#1989fa" />
+      </block>
     </block>
     <block wx:else="">
-      加载中...<van-loading color="#1989fa" />
+      暂无更多数据
     </block>
   </view>
 </view>

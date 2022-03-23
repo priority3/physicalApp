@@ -12,5 +12,5 @@
   },
   "enablePullDownRefresh":true,
   "backgroundTextStyle":"dark",
-  "onReachBottomDistance":-10
+  "onReachBottomDistance":0
 }

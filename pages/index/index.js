@@ -15,7 +15,7 @@ Page({
       // 当前页数 始终为1
       current:1,
       // 每一页显示的内容数
-      size:5,
+      size:2,
       // 总共的条数 
       total:0
     },
@@ -24,7 +24,11 @@ Page({
     // 列表是否数据为空
     isInfo:false,
     // 下拉加载loading
-    bottomLoading:false
+    bottomLoading:false,
+    // 数据是否全部加载完毕,
+    isInfoFull:false,
+    // 给触底加载 添加锁
+    isBottomHttp:false
   },
   // 获取列表数据
   handleGetInfoList(isRefresh = false){
@@ -48,6 +52,7 @@ Page({
         bottomLoading:false
       })
     }).catch((err) => {
+      console.log(err);
       handleOwnNotify( err || "出错啦~")
       _this.setData({
         isLoading:false, 
@@ -63,6 +68,35 @@ Page({
     })
   },
 
+  // 下拉加载获取数据
+  handleGetBottomList(){
+    const {isBottomHttp} = this.data
+    if(isBottomHttp) return
+    let {current,size} = this.data.pagination
+    current += 1
+    this.setData({
+      bottomLoading:true,
+      ['pagination.current']:current
+    })
+    console.log({current,size});
+    getAppiontList({current,size}).then((res) => {
+      const {records,total,size} = res.data
+      console.log(res.data);
+      // 下拉已经到底 
+      if(records.length === 0){
+        this.setData({
+          isInfoFull:true,
+          isBottomHttp:true
+        })
+        return
+      }
+      let infoList = this.data.infoList.concat(records)
+      this.setData({
+        infoList
+      })
+    })
+
+  },
   onLoad(){
     this.handleGetInfoList()
   },
@@ -114,22 +148,19 @@ Page({
     this.setData({
       pagination:{
         current:1,
-        size:5,
-        total:0
-      }
+        size:2,
+        total:0,
+        
+      },
+      isInfoFull:false,
+      isBottomHttp:false
     })
 
     this.handleGetInfoList(true)
   },
   // 监听下拉加载
   onReachBottom(){
-    console.log("下拉加载");
-    let {size} = this.data.pagination
-    size *= 2
-    this.setData({
-      ['pagination.size']:size,
-      bottomLoading:true
-    })
-    this.handleGetInfoList()
+    
+    this.handleGetBottomList()
   }
 })
