@@ -19,7 +19,7 @@ function HttpInstance (url,data,method,option){
    let params = {
      ...data
    }
-
+   console.log(params);
    return new Promise((resolve,reject) => {
      wx.request({
        url: `${BASEURL}${url}`,
@@ -64,11 +64,16 @@ const get = (url,params = [] ,options = {} ) => {
     options
   )
 }
-const post = (url,params,options={}) => {
+const post = (url,params,options = {}) => {
   return HttpInstance(url, params, "POST", options);
+}
+
+const put = (url,params,options = {}) => {
+  return HttpInstance(url,params,"PUT",options)
 }
 
 export {
   get,
-  post
+  post,
+  put
 }

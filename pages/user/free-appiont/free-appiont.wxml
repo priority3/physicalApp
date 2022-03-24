@@ -6,6 +6,7 @@
   <view class="img-title">添加图片说明</view>
   <van-uploader multiple file-list="{{ fileList }}" bind:after-read="afterRead" bind:delete="deleteFile" image-fit="scaleToFill"
   max-count="8"
+  preview-image="true"
   />
   <view class="img-title">学期选择</view>
 

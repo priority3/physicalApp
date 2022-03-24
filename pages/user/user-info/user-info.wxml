@@ -94,13 +94,12 @@
   >
     <van-cell-group>
       <van-field
-        model:value="{{ oldPassword }}"
+        model:value="{{ prePassword }}"
         type="password"
         required
         clearable
         label="旧密码"
         placeholder="请输入密码"
-        bind:click-icon="onClickIcon"
       />
 
       <van-field

@@ -10,6 +10,8 @@ export {idReg,pasReg} from "./regUtil"
 // 重写的组件构造 ---》 vue
 export {profileComponent} from "./profileComponent"
 
+// 封装批量上传 formData
+export {FormData} from "./formData"
 // error 提示
 const handleOwnNotify = (message, type = "warning") => {
   // let top = app.globalData.statusBarHeight;

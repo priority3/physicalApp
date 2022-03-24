@@ -1,3 +1,4 @@
 project.config.json
 pnpm-lock.yaml
 node_modules
+project.private.config.json

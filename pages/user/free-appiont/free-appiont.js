@@ -1,5 +1,5 @@
 // pages/user/free-appiont/free-appiont.js
-import {Dialog,handleOwnNotify} from "../../../utils/util"
+import {Dialog,handleOwnNotify,FormData}  from "../../../utils/util"
 import {handleApplyFree} from "../../../services/appiontList"
 Page({
 
@@ -39,30 +39,54 @@ Page({
       title:"提示",
       message:"是否确定提交",
     }).then(() => {
-      const {reason,semester} = this.data
+      const {reason,semester,fileList} = this.data
       if(reason.trim() === ''){
         handleOwnNotify( "申请理由不能为空🙄")
         return
       }
-      handleApplyFree({reason,semester}).then((res) => {
-        console.log(res);
-        if(res.code === 200){
-          wx.showToast({
-            title: '提交成功',
-          })
-        }
-      }).catch((err) => {
-        handleOwnNotify(err || "提交失败🙄,请稍后重试")
+      console.log(reason,semester,fileList);
+      wx.uploadFile({
+        filePath: 'filePath',
+        name: 'name',
+        url: 'url',
       })
+      this.batchUpload({reason,semester,fileList})
+      // handleApplyFree({reason,semester}).then((res) => {
+      //   console.log(res);
+      //   if(res.code === 200){
+      //     wx.showToast({
+      //       title: '提交成功',
+      //     })
+      //   }
+      // }).catch((err) => {
+      //   handleOwnNotify(err || "提交失败🙄,请稍后重试")
+      // })
     }).catch(()=>{
 
     })
   },
+  // 封装 提交表单操作
+  batchUpload({reason,semester,fileList}){
+    let formdata = new FormData()
+    // 添加参数
+    formdata.append(reason)
+    formdata.append(semester)
+    fileList.forEach((item) => {
+      formdata.appendFile(item.name,item.url)
+      
+    })
+    console.log(formdata.getData(),"哎呀哎呀");
+     
+  },
+
   afterRead(event) {
     const { file } = event.detail;
     let fileList = [...this.data.fileList]
-    file.forEach((item) => {
-      fileList.push(item)
+    file.forEach((item,index) => {
+      fileList.push({
+        ...item,
+        name:'img'+index
+      })
     })
     this.setData({
       fileList

@@ -24,7 +24,10 @@ Page({
         isLoading:true
       })
       return postLogin({userName,password}).then((res) => {
-        console.log(res.data);
+        if(res.code === 500){
+          handleOwnNotify(res.msg)
+          return
+        }
         wx.setStorageItem({
           ...res.data
         })

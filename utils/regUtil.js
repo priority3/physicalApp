@@ -13,6 +13,10 @@ const idReg = (userid) => {
   return true
 }
 
+/**
+ * 校验密码 数字和英文 6-20位
+ * @param {密码} word 
+ */
 const pasReg = (word) => {
   let flag = true
   const reg = /^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{6,20}$/

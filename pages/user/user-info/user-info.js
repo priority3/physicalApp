@@ -1,6 +1,6 @@
 // pages/user/user-info/user-info.js
 import {getUserInfo} from "../../../services/logionRequest"
-
+import {updateStuPwd} from "../../../services/user"
 // Notify弹出
 import {handleOwnNotify,pasReg} from "../../../utils/util"
 
@@ -13,7 +13,7 @@ Page({
     list:{
       
     },
-    oldPassword:'',
+    prePassword:'',
     newPassword:'',
     rePassword:'',
     btnLoading:false,
@@ -61,11 +61,21 @@ Page({
   
   // 修改密码 确定之后回调
   fixedPassword(){
-    const {newPassword,rePassword} = this.data
+    const {newPassword,rePassword,prePassword} = this.data
     if(newPassword !== rePassword){
       return
     }
-    console.log("ok 更改密码");
+    if(pasReg(newPassword)){
+      updateStuPwd({prePassword,newPassword}).then((res) => {
+        console.log(res)
+        const {code,msg} = res
+        handleOwnNotify(msg)
+      }).catch(err => console.log(err))
+    }else{
+      handleOwnNotify("新密码必须为6-20位数字和英文🙄")
+    }
+  
+    
   },
 
   // 退出登录
