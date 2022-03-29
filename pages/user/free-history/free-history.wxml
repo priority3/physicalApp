@@ -1,0 +1,14 @@
+
+<view class="fr-his-container">
+  <warn-card wx:if="{{freeInfoList.length === 0}}"  isLoading="{{isLoading}}" >
+    {{isInfo  ? "暂无数据" : "加载中..."}}
+  </warn-card>
+  <block wx:for="{{freeInfoList}}" wx:key="id">
+    <notice-card 
+      isPass="{{item.isPass}}"
+      semester="{{item.semester}}"
+      reason="{{item.reason}}"
+    ></notice-card>
+  </block>
+</view>
+<van-notify id="van-notify" />

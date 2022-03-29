@@ -6,6 +6,7 @@
   capture-catch:tap="btnClick"
   custom-style="{{customStyle}}"
   loading="{{isLoading}}"
+  custom-class="defaultClass {{customClass}}"
 >
   <slot></slot>
 </van-button>

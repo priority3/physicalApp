@@ -1,0 +1,11 @@
+{
+  "component": true,
+  "usingComponents": {
+    "van-divider": "/miniprogram_npm/@vant/weapp/divider/index",
+    "debounce-button":"/components/deBounceButton/deBounceButton",
+    "van-dialog": "/miniprogram_npm/@vant/weapp/dialog/index",
+    "van-cell": "/miniprogram_npm/@vant/weapp/cell/index",
+    "van-cell-group": "/miniprogram_npm/@vant/weapp/cell-group/index",
+    "van-image": "/miniprogram_npm/@vant/weapp/image/index"
+  }
+}

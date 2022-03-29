@@ -2,8 +2,8 @@
   "usingComponents": {
     "van-dropdown-menu": "/miniprogram_npm/@vant/weapp/dropdown-menu/index",
     "van-dropdown-item": "/miniprogram_npm/@vant/weapp/dropdown-item/index",
-    "physical-card":"/components/physicalCard/physicalCard",
+    "physical-card":"/components/PhysicalCard/PhysicalCard",
     "van-notify": "/miniprogram_npm/@vant/weapp/notify",
-    "ward-card":"/components/wardingCard/wardingCard"
+    "ward-card":"/components/WardingCard/WardingCard"
   }
 }

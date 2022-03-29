@@ -1,9 +1,9 @@
 <view class="home-box">
   <image src="https://i.bmp.ovh/imgs/2022/03/553327bdd6266790.png" alt="" class="logo-img"/>
   <van-divider />
-  <ward-card wx:if="{{infoList.length === 0}}"  isLoading="{{isLoading}}" >
+  <warn-card wx:if="{{infoList.length === 0}}"  isLoading="{{isLoading}}" >
       {{isInfo  ? "暂无数据" : "加载中..."}}
-  </ward-card>
+  </warn-card>
   <view class="info-title">
     <text>测试信息</text>
     <text>下拉刷新</text>

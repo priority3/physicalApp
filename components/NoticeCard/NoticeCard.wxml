@@ -1,0 +1,25 @@
+<wxs src="./NoticeCard.wxs" module="t"></wxs>
+<view class="notice-card-container">
+  <view class="notice-card-title">
+    <view>审核结果</view>
+    <view class="approve-res {{isPass}}">{{t._(isPass)}}</view>
+    <view>{{semester}}</view>
+  </view>
+  <view class="notice-card-btn">
+    <debounce-button size="small" bind:debouncetap='showDetail'>详情</debounce-button>
+  </view>
+</view>
+
+<van-dialog
+  use-slot
+  title="申请"
+  show="{{ isShow }}"
+>
+  <van-cell-group inset>
+    <van-cell title="审核结果" value="{{t._(isPass)}}" value-class="approve-res {{isPass}}"/>
+    <van-cell title="审批理由" value="" />
+    <van-cell title="申请理由" value="{{reason}}"/>
+    <van-cell title="学期" value="{{semester}}"/>
+    
+  </van-cell-group>
+</van-dialog>

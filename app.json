@@ -5,14 +5,14 @@
     "pages/user/user",
     "pages/user/free-appiont/free-appiont",
     "pages/user/user-info/user-info",
-    "pages/user/info-appiont/info-appiont"
+    "pages/user/info-appiont/info-appiont",
+    "pages/user/free-history/free-history"
   ],
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#BEE8FF",
     "navigationBarTitleText": "体测预约",
     "navigationBarTextStyle": "black"
-    
   },
   "tabBar": {
     "borderStyle": "black",

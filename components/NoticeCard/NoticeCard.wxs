@@ -1,0 +1,11 @@
+function _(name) {
+  var map = {
+    'pass': '通过',
+    'not_pass': '不通过'
+  }
+  return map[name]
+}
+
+module.exports = {
+  _: _
+}

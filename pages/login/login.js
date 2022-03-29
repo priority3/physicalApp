@@ -42,7 +42,7 @@ Page({
       })
     }else{
       // 抛出 提出校验不通过
-      this.handleOwnNotify("账号不能为空🙄")
+      handleOwnNotify("账号不能为空🙄")
 
     }
     // wx.router.switchTab('/pages/index/index')

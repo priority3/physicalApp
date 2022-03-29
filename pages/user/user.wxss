@@ -22,6 +22,11 @@
   height: 100%;
 }
 
+/* 自定义icon */
+.custom-icon{
+  margin:0 10rpx 0 6rpx;
+}
+
 
 /* 波浪 */
 /* wave */

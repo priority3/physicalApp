@@ -1,5 +1,5 @@
-// pages/user/info-appiont/info-appiont.js
-import {getUsedAppiontInfo} from "../../../services/appiontList"
+// pages/user/freee-history/free-history.js
+import {handleGetFreeHistoryList} from "../../../services/appiontList"
 import {handleOwnNotify} from "../../../utils/util"
 Page({
 
@@ -7,50 +7,54 @@ Page({
    * 页面的初始数据
    */
   data: {
-    
-    dataList:[],
-    // 加载状态
-    isLoading:true,
-    // 数据是否为空
+    // 学生预约信息
+    freeInfoList:[],
+    isLoading:false,
     isInfo:false
   },
-  changeShowInfo(e){
-    let ind = e.detail
+  // 不渲染数据
+  state:{
+    
   },
-  // 获取列表数据
-  handleGetUsedInfo(){
-    this.setData({
-      isLoading:true,
-      isInfo:false
-    })
-    getUsedAppiontInfo().then((res) => {
-      if(res.code === 200){
-        this.setData({
-          dataList:res.data,
-          isLoading:false,
-          isInfo:res.data.length === 0
-        })
-      }else{
-        handleOwnNotify("获取列表数据失败🙄")
-        this.setData({
-          isLoading:false,
-          isInfo:true 
-        })
-      }
-    }).catch((err) => {
-      this.setData({
-        isLoading:false,
-        isInfo:true
-      })
-      handleOwnNotify("获取列表数据失败🙄")
-    })
-  },
-  
+
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
-    this.handleGetUsedInfo()
+  onLoad: function (options) {  
+    this.setData({
+      isLoading:true
+    })
+    handleGetFreeHistoryList().then((res) => {
+      this.computedList(res)
+    }).catch((err) => {
+      this.setData({
+        isInfo:true
+      })
+      handleOwnNotify(err)
+    }).finally(() => {
+      this.setData({
+        isLoading:false
+      })
+    })
+
+  },
+  computedList(data){
+    if(data.length === 0) {
+      this.setData({
+        isInfo:true
+      })
+      return
+    }
+    let freeInfoList = data?.map((item) => {
+      return {
+        ...item['studentFreeTest'],
+        images:item['images'],
+        isPass:item['isPass'] === 1 ? 'pass' : 'not_pass'
+      }
+    }) ?? []
+    this.setData({
+      freeInfoList
+    })
   },
 
   /**

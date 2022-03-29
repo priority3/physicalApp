@@ -27,8 +27,7 @@ Page({
     bottomLoading:false,
     // 数据是否全部加载完毕,
     isInfoFull:false,
-    // 给触底加载 添加锁
-    isBottomHttp:false
+    
   },
   // 获取列表数据
   handleGetInfoList(isRefresh = false){
@@ -68,25 +67,23 @@ Page({
     })
   },
 
-  // 下拉加载获取数据
+  // 上拉加载获取数据
   handleGetBottomList(){
-    const {isBottomHttp} = this.data
-    if(isBottomHttp) return
+    const {isInfoFull} = this.data
+    if(isInfoFull) return
     let {current,size} = this.data.pagination
     current += 1
     this.setData({
       bottomLoading:true,
       ['pagination.current']:current
     })
-    console.log({current,size});
     getAppiontList({current,size}).then((res) => {
       const {records,total,size} = res.data
-      console.log(res.data);
-      // 下拉已经到底 
+      // 上拉已经到底 
       if(records.length === 0){
         this.setData({
           isInfoFull:true,
-          isBottomHttp:true
+          // isBottomHttp:true
         })
         return
       }
@@ -153,7 +150,6 @@ Page({
         
       },
       isInfoFull:false,
-      isBottomHttp:false
     })
 
     this.handleGetInfoList(true)

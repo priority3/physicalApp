@@ -20,6 +20,9 @@ image {
 }
 
 page {
+  font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Helvetica,
+    Segoe UI, Arial, Roboto, 'PingFang SC', 'miui', 'Hiragino Sans GB', 'Microsoft Yahei',
+    sans-serif;
   --red: #e54d42;
   --orange: #f37b1d;
   --yellow: #fbbd08;

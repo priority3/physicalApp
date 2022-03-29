@@ -15,10 +15,10 @@ const getUsedAppiontInfo = () => {
 }
 /**
  * 申请免测
- * @param {申请原因，申请学期} param0 
+ * @param {申请原因，申请学期，图片} param0 
  */
-const handleApplyFree = ({reason,semester}) => {
-  return post('/freeTest/application',{reason,semester})
+const handleApplyFree = ({reason,semester,images}) => {
+  return post('/freeTest/application',{reason,semester,images})
 }
 
 /**
@@ -29,9 +29,35 @@ const handleaAppoint = ({testId}) => {
   return post('/reserve/order',{testId})
 }
 
+/**
+ * 获取学期列表
+ */
+const handleGetSemeter = () => {
+  return new Promise((resolve,reject) => {
+    get('/semester').then((res) => {
+      resolve(res.data)
+    }).catch(err => reject(err))
+  })
+}
+
+/**
+ * 获取历史免测信息
+ */
+const handleGetFreeHistoryList = () => {
+  return new Promise((resolve,reject) => {
+    get('/freeTest/freeInfo').then((res) => {
+      resolve(res.data)
+    }).catch((err) => reject(err))
+  })
+}
+
+
+
 export {
   getAppiontList,
   getUsedAppiontInfo,
   handleApplyFree,
-  handleaAppoint
+  handleaAppoint,
+  handleGetSemeter,
+  handleGetFreeHistoryList
 }

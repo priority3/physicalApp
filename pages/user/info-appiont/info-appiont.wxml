@@ -2,9 +2,9 @@
 
 <view>
   <!-- 下拉菜单 -->
-  <van-dropdown-menu active-color="#1989fa">
+  <!-- <van-dropdown-menu active-color="#1989fa">
     <van-dropdown-item value="{{0}}" options="{{ option1 }}" bind:change="changeShowInfo" />
-  </van-dropdown-menu>
+  </van-dropdown-menu> -->
   <view style="padding: 0 50rpx;">
     <ward-card wx:if="{{dataList.length === 0}}"  isLoading="{{isLoading}}" >
       {{isInfo  ? "暂无数据" : "加载中..."}}

@@ -27,14 +27,11 @@ function HttpInstance (url,data,method,option){
        timeout:10000,
        data:params,
        header:{
-         
          ...header
        },
        success(res){
-        console.log(res);
         // token过期处理
         if(res.data.code === 10001){
-
           wx.clearStorageSync()
           wx.router.replace("/pages/login/login",{msg:res.data.msg})
           reject(res.data)
