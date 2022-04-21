@@ -4,7 +4,7 @@
   <!-- <view class="sub-title">
     体测预约
   </view> -->
-  <view class="pri-title">体质测试预约</view>
+  <view class="pri-title">优体测</view>
 
   <view class="login-box">
     <image src="../../assets/logo.png" alt=""/>

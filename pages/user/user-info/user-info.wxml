@@ -24,7 +24,7 @@
     />
 
     <van-field
-      value="{{ list.infoId }}"
+      value="{{ list.userName }}"
       left-icon="cluster-o"
       label="学号"
       placeholder="学号"
@@ -32,17 +32,17 @@
       disabled="{{true}}"
     />
     <van-field
-      value="{{ list.schoolClass }}"
+      value="{{ list.phone }}"
       left-icon="phone-o"
-      label="班级"
-      placeholder="号码"
+      label="联系方式"
+      placeholder="联系方式"
       clearable
       disabled="{{true}}"
     />
     
     <van-field
       value="{{ list.grade }}"
-      left-icon="manager-o"
+      left-icon="discount"
       label="年级"
       placeholder="年级"
       readonly
@@ -51,17 +51,17 @@
     />
     <van-field
       value="{{ list.college }}"
-      left-icon="user-o"
+      left-icon="newspaper-o"
       label="学院"
       placeholder="学院"
       readonly
       disabled="{{true}}"
     />
     <van-field
-      value="{{ list.specialty }}"
-      left-icon="manager-o"
-      label="专业"
-      placeholder="专业"
+      value="{{ list.identity }}"
+      left-icon="label-o"
+      label="身份"
+      placeholder="身份"
       clearable
       disabled="{{true}}"
     />

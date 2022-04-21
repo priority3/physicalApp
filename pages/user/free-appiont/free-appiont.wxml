@@ -1,12 +1,17 @@
 <!--pages/user/free-appiont/free-appiont.wxml-->
 <view class="appiont-container">
-  
-  <textarea class="text-box" value="{{reason}}" placeholder="申请理由...字数不超过200字" 	placeholder-style="font-size:30rpx;" focus bindblur="colInfo" maxlength="200"></textarea>
+  <view class="img-title">免测申请选择</view>
+  <van-dropdown-menu active-color="#1989fa">
+    <van-dropdown-item value="{{0}}" options="{{ selectFreeOption }}" bind:change="changeFreeType" />
+  </van-dropdown-menu>
   <view class="img-title">学期选择</view>
-
   <van-dropdown-menu active-color="#1989fa">
     <van-dropdown-item value="{{0}}" options="{{ selectOption }}" bind:change="changeShowInfo" />
   </van-dropdown-menu>
+  <view class="img-title">申请理由</view>
+  <textarea class="text-box text-reason" value="{{reason}}" placeholder="申请理由...字数不超过200字" 	placeholder-style="font-size:30rpx;" focus bindblur="colReason" ></textarea>
+  <view wx:if="{{type === 2}}" class="img-title">申请备注</view>
+  <textarea wx:if="{{type === 2}}" class="text-box text-remark" value="{{remark}}" placeholder="备注...字数不超过50字" 	placeholder-style="font-size:30rpx;"  bindblur="colRemark" ></textarea>
   <view class="img-title">添加图片说明 最多四张</view>
   <van-uploader multiple file-list="{{ fileList }}" bind:after-read="afterRead" bind:delete="deleteFile" image-fit="scaleToFill"
   max-count="4"

@@ -1,5 +1,5 @@
 // pages/user/freee-history/free-history.js
-import {handleGetFreeHistoryList} from "../../../services/appiontList"
+import {handleGetFreeHistoryList,handleUsedReady} from "../../../services/appiontList"
 import {handleOwnNotify} from "../../../utils/util"
 Page({
 
@@ -10,7 +10,7 @@ Page({
     // 学生预约信息
     freeInfoList:[],
     isLoading:false,
-    isInfo:false
+    isInfo:false,
   },
   // 不渲染数据
   state:{
@@ -24,18 +24,7 @@ Page({
     this.setData({
       isLoading:true
     })
-    handleGetFreeHistoryList().then((res) => {
-      this.computedList(res)
-    }).catch((err) => {
-      this.setData({
-        isInfo:true
-      })
-      handleOwnNotify(err)
-    }).finally(() => {
-      this.setData({
-        isLoading:false
-      })
-    })
+    this.getList()
 
   },
   computedList(data){
@@ -45,18 +34,62 @@ Page({
       })
       return
     }
+    const getIsPass = (isPass) => {
+      let returnPass = ''
+      switch (isPass) {
+        case '0':{
+          returnPass = 'is_passing'
+          break;
+        }
+        case '1':{
+          returnPass = 'pass'
+          break;
+        }
+        case '2':{
+          returnPass = 'not_pass'
+          break;
+        }
+        default:{
+          returnPass = '有问题'
+        }
+      }
+      return returnPass
+    }
     let freeInfoList = data?.map((item) => {
       return {
         ...item['studentFreeTest'],
         images:item['images'],
-        isPass:item['isPass'] === 1 ? 'pass' : 'not_pass'
+        isPass: getIsPass(item['studentFreeTest']['isPass']),
+        auditTime:item['studentFreeTest']['auditTime'],
       }
     }) ?? []
     this.setData({
       freeInfoList
     })
   },
+  handleUsedReady({detail}){
+    const {id} = detail;
+    handleUsedReady({id}).then((res) => {
+      if(res.code === 200){
+        this.getList()
+      }
+    }).catch((err) => console.log(err))
+  },
 
+  getList(){
+    handleGetFreeHistoryList().then((res) => {
+      this.computedList(res)
+    }).catch((err) => {
+      this.setData({
+        isInfo:true
+      })
+      handleOwnNotify((typeof(err) === 'string' && err) || '出错啦~🙄')
+    }).finally(() => {
+      this.setData({
+        isLoading:false
+      })
+    })
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

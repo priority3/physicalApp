@@ -1,6 +1,9 @@
 // pages/user/free-appiont/free-appiont.js
 import {Dialog,handleOwnNotify,FormData}  from "../../../utils/util"
 import {handleApplyFree,handleGetSemeter} from "../../../services/appiontList"
+
+// 提交表达锁
+const isChangeFlag = true
 Page({
 
   /**
@@ -8,15 +11,28 @@ Page({
    */
   data: {
     reason:'',
-    semester:'大一学期',
+    // 申请学期
+    semester:'',
+    // 申请得类型
+    type:'',
+    // 申请得备注
+    remark:'',
     fileList: [],
     // 远端保存图片链接 
     handleList:[],
-    selectOption:[
-      { text: '大一学期', value: 0 },
-      { text: '大二学期', value: 1 },
-      { text: '大三学期', value: 2 },
-      { text: '大四学期', value: 3 }
+    selectOption:[],
+    selectFreeOption:[
+      {
+        text:'免测申请',
+        value:0
+      },{
+        text:'缓测申请',
+        value:1
+      },{
+        text:'其他事项',
+        value:2
+      }
+
     ]
   },
   // 获取学期列表
@@ -34,14 +50,37 @@ Page({
       }
     })??[]
     this.setData({
-      selectOption
+      selectOption,
+      semester:selectOption[0].text
     })
   },
   // 收集输入框内容
-  colInfo(e){
+  colReason(e){
     const {value} = e.detail
+    let str = value
+    if(value.length > 2){
+      str = value.substring(0,2)
+    }
     this.setData({
-      reason : value
+      reason : str
+    })
+  },
+  // 收集备注
+  colRemark(e){
+    const {value} = e.detail
+    let str = value
+    if(value.length > 50){
+      str = value.substring(0,50)
+    }
+    this.setData({
+      remark : str
+    })
+  },
+  // 获取申请得免测类型
+  changeFreeType(e){
+    const type = e.detail
+    this.setData({
+      type
     })
   },
   // 获取选择得学期列表
@@ -49,20 +88,22 @@ Page({
     const ind = e.detail
     let semester = this.data.selectOption[ind].text
     this.setData({
-      semester
+      semester,
     })
   },
+  
   submit(){
     Dialog.confirm({
       title:"提示",
       message:"是否确定提交",
     }).then(async () => {
-      const {reason,semester,fileList} = this.data
+      const {reason,semester,handleList,type,remark} = this.data
       if(reason.trim() === ''){
         handleOwnNotify( "申请理由不能为空🙄")
         return
       }
-      await this.batchUpload({reason,semester,fileList})
+      let params = type === 2 ? {reason,semester,handleList} : {reason,semester,handleList,remark}
+      await this.batchUpload(params)
       // handleApplyFree({reason,semester}).then((res) => {
       //   console.log(res);
       //   if(res.code === 200){
@@ -78,95 +119,82 @@ Page({
     })
   },
   // 封装 提交图片操作
-  batchUpload({reason,semester,fileList}){
+  batchUpload({reason,semester,handleList,type}){
+    handleApplyFree({reason,semester,images:handleList},type).then((res) => {
+      handleOwnNotify('提交申请成功','success')
+      wx.router.replace('/pages/user/user')
+    }).catch((err) => {
+      handleOwnNotify((typeof(err.msg) && err.msg) || '提交申请失败')
+    })
+  },
+  afterRead(event) {
+    const { file } = event.detail;
     const token = wx.getStorageItem("token")
-    fileList.forEach((item,ind) => {
-      this.setData({
-        [`fileList[${ind}]`]:{
-          ...item,
-          status: 'uploading',
-          message: '上传中',
-        }
+    console.log(token);
+    const _this = this
+    let handleList = []
+    let fileList = [...this.data.fileList]
+    const len = fileList.length
+    file.forEach((item,ind) => {
+      fileList.push({
+        ...item,
       })
-      const _this = this
+    })
+    file.forEach((item,ind) => {
       wx.uploadFile({
         filePath: item.url,
         name: 'file',
-        url: 'http://114.55.254.24:8282/freeTest/uploadImg',
+        url: 'https://physicaltest.weilylab.com:8282/freeTest/uploadImg',
         header:{
           token
         },
         formData:{
-          reason,
-          semester
+          
         },
         success(res){
           // token 过期 
-          console.log(res);
           const getData = JSON.parse(res.data)
           if(getData.code === 10001){
             wx.clearStorageSync()
             wx.router.replace("/pages/login/login",{msg:getData.msg})
           }
-          if(getData.code === 200){
-            let handleList = [..._this.data.handleList,getData.data]
+          if(getData.code !== 200){
             _this.setData({
-              handleList
-            })
-            if(handleList.length === fileList.length ){
-              handleApplyFree({reason,semester,images:handleList}).then((res) => {
-                handleOwnNotify('上传成功','success')
-              }).catch((err) => {
-                handleOwnNotify(err || '失败了噢~')
-              })
-            }
-          }else{
-            _this.setData({
-              [`fileList[${ind}]`]:{
+              [`fileList[${len+ind}]`]:{
                 ...item,
                 status: 'failed',
                 message: '上传失败',
               }
             })
+          }else{
+            handleList.push(getData.data)
+            _this.setData({
+              [`fileList[${len+ind}]`]:{
+                ...item,
+                status: '',
+                message: '',
+              }
+            })
           }
         },
         fail(err){
-          console.log(err);
           _this.setData({
-            [`fileList[${ind}]`]:{
+            [`fileList[${len+ind}]`]:{
               ...item,
               status: 'failed',
               message: '上传失败',
             }
           })
+          handleOwnNotify('上传图片失败，请稍后重试！！')
         },
         complete(){
-          _this.setData({
-            [`fileList[${ind}]`]:{
-              ...item,
-              status: '',
-              message: '',
-            }
-          })
+          
         }
       })
     })
-    
-  },
-
-
-
-  afterRead(event) {
-    const { file } = event.detail;
-    let fileList = [...this.data.fileList]
-    file.forEach((item,index) => {
-      fileList.push({
-        ...item,
-        
-      })
-    })
     this.setData({
-      fileList
+      fileList,
+      handleList
     })
     
   },

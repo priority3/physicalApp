@@ -5,14 +5,20 @@ import {get,post} from "./http.js"
  * @param {用户名，密码} param0 
  */
 const postLogin = ({userName,password}) => {
-  return post("/user/login",{userName,password})
+  return new Promise((reslove,reject) => {
+    post("/user/login",{userName,password}).then((res) => {
+      reslove(res)
+    }).catch((err) => {
+      reject(err.msg)
+    })
+  })
 }
 
 /**
  * 获取用户的信息
  */
 const getUserInfo = () => {
-  return get("/student/stuInfo")
+  return get("/user/userInfo")
 }
 
 /**

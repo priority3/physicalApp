@@ -6,3 +6,7 @@
   color: #ff4757;
 }
 
+.is_passing{
+  color:#ffdd59
+}
+

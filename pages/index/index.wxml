@@ -1,18 +1,18 @@
 <view class="home-box">
   <image src="https://i.bmp.ovh/imgs/2022/03/553327bdd6266790.png" alt="" class="logo-img"/>
   <van-divider />
-  <warn-card wx:if="{{infoList.length === 0}}"  isLoading="{{isLoading}}" >
-      {{isInfo  ? "暂无数据" : "加载中..."}}
-  </warn-card>
   <view class="info-title">
     <text>测试信息</text>
-    <text>下拉刷新</text>
     <view>
         一共 
       <van-tag type="{{pagination.total === 0 ? 'warning' : 'success'}}">{{pagination.total}}</van-tag> 
         条
     </view>
   </view>
+  <warn-card wx:if="{{infoList.length === 0}}"  isLoading="{{isLoading}}" >
+      <text>{{isInfo  ? "暂无数据" : "加载中..."}}</text>
+  </warn-card>
+  
   
   <block wx:for="{{infoList}}" wx:key="id">
     <phy-card  bind:appiontInfo="clickAppoint" index="{{item.id}}" customStyle="margin-top:20rpx;" cardInfo="{{item}}" btnLoading="{{btnLoading}}"></phy-card>
@@ -21,7 +21,7 @@
   <!-- 下拉加载更多 -->
   <view style="text-align: center; margin-top: 10px;">
     <block wx:if="{{!isInfoFull}}">
-      <block wx:if="{{!bottonLoading}}">
+      <block wx:if="{{bottonLoading}}">
         下拉加载更多
       </block>
       <block wx:else="">

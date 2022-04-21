@@ -1,4 +1,5 @@
 // pages/user/user.js
+import {handleGetMessage} from "../../services/appiontList"
 Page({
 
   /**
@@ -6,9 +7,25 @@ Page({
    */
   data: {
     userInfo:{},
-    avatarImg:""
+    avatarImg:"",
+    messageDot:false,
   },
-
+  // 获取通知消息
+  handleGetMessage(){
+    handleGetMessage().then((res) => {
+      if(res){
+        this.setData({
+          messageDot:true
+        })
+      }else{
+        this.setData({
+          messageDot:false
+        })
+      }
+    }).catch(err => {
+      console.log(err);
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */
@@ -28,6 +45,7 @@ Page({
    */
   onShow: function () {
     // 获取头像链接
+    this.handleGetMessage()
     const avatarImg = wx.getStorageItem("avatar")
     if(avatarImg){
       this.setData({
@@ -40,7 +58,7 @@ Page({
    * 生命周期函数--监听页面隐藏
    */
   onHide: function () {
-
+    
   },
 
   /**

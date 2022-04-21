@@ -33,8 +33,8 @@ Page({
         })
         this.handleRedirect()
       }).catch(err => {
-        
-        handleOwnNotify(err || "登录失败，请重试🙄")
+        console.log(err);
+        handleOwnNotify((typeof(err) === 'string' && err)  || "登录失败，请重试🙄")
       }).finally(() => {
         this.setData({
           isLoading:false

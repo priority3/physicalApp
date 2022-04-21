@@ -1,7 +1,7 @@
 
 function HttpInstance (url,data,method,option){
   // const BASEURL = "http://192.168.31.200:8282"
-  const BASEURL = "http://114.55.254.24:8282"
+  const BASEURL = "https://physicaltest.weilylab.com:8282"
   const authorization = wx.getStorageItem(wx.KEYS["TOKEN"])
   const refreshToken = wx.getStorageItem(wx.KEYS["REFRESH_TOKEN"]);
   let header = {
@@ -19,7 +19,6 @@ function HttpInstance (url,data,method,option){
    let params = {
      ...data
    }
-   console.log(params);
    return new Promise((resolve,reject) => {
      wx.request({
        url: `${BASEURL}${url}`,
@@ -36,8 +35,10 @@ function HttpInstance (url,data,method,option){
           wx.router.replace("/pages/login/login",{msg:res.data.msg})
           reject(res.data)
         }
+        if(res.data.code !== 200){
+          reject(res.data)
+        }
         // wx.router.replace("/pages/login/login")
-
         return resolve(res.data)
        },
        fail(){

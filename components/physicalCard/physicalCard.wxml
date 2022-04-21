@@ -32,7 +32,7 @@
   </view>
   <view class="user-info">
     <view class="user-box">
-      <image src="https://i.bmp.ovh/imgs/2022/03/a61e4b55483e255f.png" alt="" class="info-avator"/>
+      <image src="../../assets/user.png" alt="" class="info-avator"/>
       <text class="user-text">{{cardInfo.teacherInfo.name}}</text>
     </view>
     <view class="info-status">
@@ -63,6 +63,6 @@
     <van-cell title="地点" value="{{cardInfo.location}}" />
     <van-cell title="预约人数" value="{{cardInfo.orderNum}}/{{cardInfo.store}}" />
     <van-cell title="负责老师" value="{{cardInfo.teacherInfo.name}}" />
-    <van-cell title="相关信息说明" required value="{{cardInfo.description}}" />
+    <van-cell title="相关信息说明" required value="{{cardInfo.description ? cardInfo.description:'暂无'}}" />
   </van-cell-group>
 </van-dialog>

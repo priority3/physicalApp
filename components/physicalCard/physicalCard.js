@@ -22,7 +22,7 @@ Component({
     },
     // 根据index 触发 查看预约条件
     index:{
-      type:Number,
+      type:String,
       value:-1
     },
     btnLoading:{

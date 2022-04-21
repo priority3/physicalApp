@@ -67,7 +67,6 @@ Page({
     }
     if(pasReg(newPassword)){
       updateStuPwd({prePassword,newPassword}).then((res) => {
-        console.log(res)
         const {code,msg} = res
         handleOwnNotify(msg)
       }).catch(err => console.log(err))

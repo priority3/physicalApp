@@ -1,8 +1,9 @@
 <!--components/wardingCard/wardingCard.wxml-->
-<view style="text-align: center;height: 100vh;">
+<view 
+  class="card-container" 
+  >
   <image src="/assets/logo.png"></image>
   <van-loading color="#1989fa" size="24px" wx:if="{{isLoading}}">
   </van-loading>
   <slot></slot>
-  
 </view>

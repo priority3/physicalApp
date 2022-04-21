@@ -6,8 +6,6 @@
     "van-notify": "/miniprogram_npm/@vant/weapp/notify",
     "van-tag": "/miniprogram_npm/@vant/weapp/tag/index",
     "van-loading": "/miniprogram_npm/@vant/weapp/loading/index"
-    
-    
   },
   "enablePullDownRefresh":true,
   "backgroundTextStyle":"dark",

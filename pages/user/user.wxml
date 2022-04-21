@@ -51,7 +51,7 @@
       link-type="navigateTo"
       url="/pages/user/free-history/free-history"
     >
-      <van-icon slot="icon" name="volume-o" dot="{{true}}" class="custom-icon" />  
+      <van-icon slot="icon" name="volume-o" dot="{{messageDot}}" class="custom-icon" />  
     </van-cell>
     
   </view>

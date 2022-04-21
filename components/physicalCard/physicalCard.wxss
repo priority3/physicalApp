@@ -2,6 +2,7 @@
 .card-header{
   padding: 10rpx;
   box-shadow: var(--ShadowSize) var(--grayShadow);
+  border-radius: 20rpx;
 }
 .card-title{
   display: flex;

@@ -47,9 +47,33 @@ const handleGetFreeHistoryList = () => {
   return new Promise((resolve,reject) => {
     get('/freeTest/freeInfo').then((res) => {
       resolve(res.data)
+    }).catch((err) => reject(err.msg))
+  })
+}
+
+/**
+ * 获取是否有未读的消息
+ */
+const handleGetMessage = () => {
+  return new Promise((resolve,reject) => {
+    get('/freeTest/hasMessage').then((res) => {
+      resolve(res.data)
     }).catch((err) => reject(err))
   })
 }
+/**
+ * 置为已读消息
+ * @param {通过免测id获得信息} param0 
+ */
+const handleUsedReady = ({id}) => {
+  return new Promise((resolve,reject) => {
+    get('/freeTest/getById',{id}).then((res) => {
+      resolve(res)
+    }).catch((err) => reject(err))
+  })
+}
+
+
 
 
 
@@ -59,5 +83,7 @@ export {
   handleApplyFree,
   handleaAppoint,
   handleGetSemeter,
-  handleGetFreeHistoryList
+  handleGetFreeHistoryList,
+  handleGetMessage,
+  handleUsedReady
 }

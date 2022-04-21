@@ -6,7 +6,7 @@ import {put} from "./http"
  * @param {旧密码，新密码} param0 
  */
 const updateStuPwd = ({prePassword,newPassword}) => {
-  return put('/student/updateStuPwd',{prePassword,newPassword})
+  return put('/user/updatePwd',{prePassword,newPassword})
 }
 
 export {

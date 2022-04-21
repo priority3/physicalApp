@@ -36,27 +36,29 @@ Page({
     this.setData({
       isLoading:true,
       infoList:[],
-      isInfo:false
+      isInfo:false,
+      bottomLoading:true
     }) 
     getAppiontList({current,size}).then((res) => {
-      console.log(res,"res success");
       const {records,total,size} = res.data
-      let isInfo = records.length === 0
+      let isInfo = records?.length === 0
+      let isInfoFull = records?.length < size || records?.length === total
       _this.setData({
         infoList:records,
         isLoading:false,
         isInfo,
         ['pagination.total']:total,
         ['pagination.size']:size,
-        bottomLoading:false
+        bottomLoading:false,
+         isInfoFull
       })
     }).catch((err) => {
-      console.log(err);
-      handleOwnNotify( err || "出错啦~")
+      handleOwnNotify( (typeof(err) === 'string'  && err) || "出错啦~🙄")
       _this.setData({
         isLoading:false, 
         isInfo:true,
-        bottomLoading:false
+        bottomLoading:false,
+        isInfoFull:true
       })
       console.log(err);
     }).finally(() => {
@@ -108,26 +110,35 @@ Page({
      
   },
   // 点击卡片预约
-  clickAppoint({index}){
+  clickAppoint(data){
+    const {index} = data.detail
+    let {current,size} = this.data.pagination
     wx.showModal({
       title: '预约',
       content:"是否确定预约？预约成功后若修改请联系管理员！",
       success:(res)=>{
+        console.log(res.confirm);
         if(res.confirm){
           handleaAppoint({testId:index}).then((res) => {
+            console.log(res);
             if(res.code === 200){
               wx.showToast({
                 title: '预约成功',
               })
               // 重新获取列表信息
-              getAppiontList()
+              getAppiontList({current,size})
             }else if(res.code === 500){
               handleOwnNotify("本学期已经预约🙄")
             }else{
               handleOwnNotify("预约失败🙄")
             }
           }).catch((err) => {
-            handleOwnNotify(err || "预约失败，请稍后重试🙄")
+            console.log(err);
+            if(err.code === 500){
+              handleOwnNotify("本学期已经预约🙄")
+            }else{
+              handleOwnNotify("预约失败，请稍后重试🙄")
+            }
           })
         }
       },

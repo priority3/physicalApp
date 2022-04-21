@@ -12,6 +12,8 @@
   align-items: center;
   justify-content: space-between;
   box-shadow: 0rpx 0rpx 15rpx rgba(0,0,0,.15);
+  position: relative;
+  overflow: hidden;
 }
 .notice-card-title{
   margin-left: 50rpx;
@@ -29,6 +31,31 @@
 
 .notice-card-btn{
   margin-right: 50rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10rpx;
+}
+.ribbon{
+  position: absolute;
+  display: inline-block;
+  box-sizing: border-box;
+  text-align: center;
+  /* 定位在右上角 */
+  position: absolute;
+  top: 0;
+  right: 0;
+  background: #ffdada;
+  color: #ff4757;
+  padding: 2px 0;
+  width: 80px;
+  
+  /* 定位彩带 */
+  /* 以左下角为锚点进行旋转操作 */
+  transform-origin: bottom left;
+  transform: translateY(-100%) translateX(30px) rotate(45deg);
+
 }
 
 

@@ -8,6 +8,12 @@
       isPass="{{item.isPass}}"
       semester="{{item.semester}}"
       reason="{{item.reason}}"
+      auditTime="{{item.auditTime}}"
+      isRead="{{item.isRead}}"
+      auditMessage="{{item.auditMessage}}"
+      handler="{{item.handler}}"
+      index="{{item.id}}"
+      bind:showDetail="handleUsedReady"
     ></notice-card>
   </block>
 </view>

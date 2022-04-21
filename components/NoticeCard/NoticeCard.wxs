@@ -1,11 +1,19 @@
-function _(name) {
+function passMap(name) {
   var map = {
     'pass': '通过',
-    'not_pass': '不通过'
+    'not_pass': '不通过',
+    'is_passing':'审核中'
   }
   return map[name]
 }
-
+function isReadMessage(mes){
+  if(mes === '1'){
+    return true
+  }else{
+    return false
+  }
+}
 module.exports = {
-  _: _
+  passMap: passMap,
+  isReadMessage:isReadMessage
 }
