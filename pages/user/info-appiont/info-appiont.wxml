@@ -11,7 +11,7 @@
     </ward-card>
   </view>
   <block wx:for="{{dataList}}" wx:key="id">
-    <physical-card isAppintment="{{true}}" customStyle='background-color:#e7f5ff;margin:20rpx auto; width:90%'
+    <physical-card isAppintment="{{true}}" customStyle='margin:20rpx auto; width:90%'
     cardInfo="{{item}}"></physical-card>
   </block>
 </view>

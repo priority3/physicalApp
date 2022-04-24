@@ -14,7 +14,7 @@ Page({
     // 申请学期
     semester:'',
     // 申请得类型
-    type:'',
+    type:0,
     // 申请得备注
     remark:'',
     fileList: [],
@@ -58,8 +58,8 @@ Page({
   colReason(e){
     const {value} = e.detail
     let str = value
-    if(value.length > 2){
-      str = value.substring(0,2)
+    if(value.length > 200){
+      str = value.substring(0,200)
     }
     this.setData({
       reason : str
@@ -102,8 +102,9 @@ Page({
         handleOwnNotify( "申请理由不能为空🙄")
         return
       }
-      let params = type === 2 ? {reason,semester,handleList} : {reason,semester,handleList,remark}
+      let params = type !== 2 ? {reason,semester,handleList,type} : {reason,semester,handleList,remark,type}
       await this.batchUpload(params)
+      // 返回上一级页面
       // handleApplyFree({reason,semester}).then((res) => {
       //   console.log(res);
       //   if(res.code === 200){
@@ -119,10 +120,12 @@ Page({
     })
   },
   // 封装 提交图片操作
-  batchUpload({reason,semester,handleList,type}){
-    handleApplyFree({reason,semester,images:handleList},type).then((res) => {
+  batchUpload({reason,semester,handleList,type,remark}){
+    handleApplyFree({reason,semester,images:handleList,type,remark}).then((res) => {
       handleOwnNotify('提交申请成功','success')
-      wx.router.replace('/pages/user/user')
+      setTimeout(() => {
+        wx.router.pop(1)
+      },1000)
     }).catch((err) => {
       handleOwnNotify((typeof(err.msg) && err.msg) || '提交申请失败')
     })
@@ -130,7 +133,6 @@ Page({
   afterRead(event) {
     const { file } = event.detail;
     const token = wx.getStorageItem("token")
-    console.log(token);
     const _this = this
     let handleList = []
     let fileList = [...this.data.fileList]

@@ -33,7 +33,7 @@ const push = (url,params,events) => {
  * @param {参数} params 
  * @param {事件} events 
  */
-const replace = (url,params) => {
+const replace = (url,params = {}) => {
   console.log(url);
   let query = ""
   for (const key in params) {
@@ -56,7 +56,7 @@ const replace = (url,params) => {
 }
 
 /**
- * 对wxwx.navigateBack 封装
+ * 对wx.navigateBack 封装
  * @param {返回得层级数} num 
  */
 const pop = (num) => {

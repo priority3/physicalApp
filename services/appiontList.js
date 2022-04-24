@@ -17,8 +17,8 @@ const getUsedAppiontInfo = () => {
  * 申请免测
  * @param {申请原因，申请学期，图片} param0 
  */
-const handleApplyFree = ({reason,semester,images}) => {
-  return post('/freeTest/application',{reason,semester,images})
+const handleApplyFree = ({reason,semester,images,remark,type,}) => {
+  return post('/freeTest/application',{reason,semester,images,remark,type,})
 }
 
 /**
@@ -26,7 +26,17 @@ const handleApplyFree = ({reason,semester,images}) => {
  * @param {预约信息id} param0 
  */
 const handleaAppoint = ({testId}) => {
-  return post('/reserve/order',{testId})
+  return new Promise((resolve,reject) => {
+    post('/reserve/order',{testId}).then((res) => {
+      if(res.code === 200){
+        resolve(res.msg)
+      }else{
+        reject(res.msg)
+      }
+    }).catch((err) => {
+      reject(err.msg)
+    })
+  })
 }
 
 /**

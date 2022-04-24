@@ -117,28 +117,13 @@ Page({
       title: '预约',
       content:"是否确定预约？预约成功后若修改请联系管理员！",
       success:(res)=>{
-        console.log(res.confirm);
         if(res.confirm){
           handleaAppoint({testId:index}).then((res) => {
-            console.log(res);
-            if(res.code === 200){
-              wx.showToast({
-                title: '预约成功',
-              })
-              // 重新获取列表信息
-              getAppiontList({current,size})
-            }else if(res.code === 500){
-              handleOwnNotify("本学期已经预约🙄")
-            }else{
-              handleOwnNotify("预约失败🙄")
-            }
+            wx.showToast({
+              title: res || '预约成功',
+            })
           }).catch((err) => {
-            console.log(err);
-            if(err.code === 500){
-              handleOwnNotify("本学期已经预约🙄")
-            }else{
-              handleOwnNotify("预约失败，请稍后重试🙄")
-            }
+            handleOwnNotify(err || "本学期已经预约🙄")
           })
         }
       },
