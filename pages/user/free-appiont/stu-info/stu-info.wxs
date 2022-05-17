@@ -1,0 +1,7 @@
+
+function getSexInfo (sex){
+    return sex === '男' ? '1' : '2'
+}
+module.exports = {
+    getSexInfo:getSexInfo
+}

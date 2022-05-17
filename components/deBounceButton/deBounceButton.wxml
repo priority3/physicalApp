@@ -7,6 +7,7 @@
   custom-style="{{customStyle}}"
   loading="{{isLoading}}"
   custom-class="defaultClass {{customClass}}"
+  form-type="{{formType}}"
 >
   <slot></slot>
 </van-button>

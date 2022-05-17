@@ -1,5 +1,3 @@
-
-
 function setStorageItem(valueObj) {
   for (const key in valueObj) {
     if (Object.hasOwnProperty.call(valueObj, key)) {
@@ -30,7 +28,6 @@ function removeStorageItem(keyArr) {
     wx.removeStorageSync(key);
   }
 }
-
 
 export {
   getStorageItem,

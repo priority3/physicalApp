@@ -10,7 +10,7 @@
       <open-data type="userNickName" class="user-name"></open-data>
       <text>一些签名</text>
     </view>
-
+    
   <!-- 波浪 -->
     <!-- 背景波浪 -->
     <view class="background_view">
@@ -20,22 +20,35 @@
       <view class='wave_3'></view>
     </view>
   </view>
-
   <!-- cell 功能区 -->
   <view class="user-fun">
-    <van-cell
+    <!-- <van-cell
       icon="friends-o"
       is-link
       title="个人信息"
       link-type="navigateTo"
       url="/pages/user/user-info/user-info"
+    /> -->
+    <van-cell
+      icon="coupon-o"
+      is-link
+      title="免测申请"
+      link-type="navigateTo"
+      url="{{urlList['normal_approve']}}"
+    />
+    <van-cell
+      icon="notes-o"
+      is-link
+      title="缓测申请"
+      link-type="navigateTo"
+      url="{{urlList['slow_approve']}}"
     />
     <van-cell
       icon="vip-card-o"
       is-link
-      title="免测申请"
+      title="其他申请"
       link-type="navigateTo"
-      url="/pages/user/free-appiont/free-appiont"
+      url="{{urlList['other_approve']}}"
     />
     <van-cell
       icon="label-o"
@@ -53,6 +66,13 @@
     >
       <van-icon slot="icon" name="volume-o" dot="{{messageDot}}" class="custom-icon" />  
     </van-cell>
+    <van-cell
+      icon="label-o"
+      is-link
+      title="完善信息"
+      link-type="navigateTo"
+      url="/pages/user/free-appiont/stu-info/stu-info"
+    />
     
   </view>
 </view>

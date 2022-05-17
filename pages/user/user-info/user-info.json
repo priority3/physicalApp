@@ -4,12 +4,12 @@
     "van-picker": "/miniprogram_npm/@vant/weapp/picker/index",
     "van-popup": "/miniprogram_npm/@vant/weapp/popup/index",
     "debounce-button":"/components/deBounceButton/deBounceButton",
-    "van-sticky": "/miniprogram_npm/@vant/weapp/sticky/index",
-    "van-cell": "/miniprogram_npm/@vant/weapp/cell/index",
     "van-cell-group": "/miniprogram_npm/@vant/weapp/cell-group/index",
     "van-notify": "/miniprogram_npm/@vant/weapp/notify",
-    "van-dialog": "/miniprogram_npm/@vant/weapp/dialog/index"
-
+    "van-dialog": "/miniprogram_npm/@vant/weapp/dialog/index",
+    "van-button":"/miniprogram_npm/@vant/weapp/button/index",
+    
+    "van-cell":"/miniprogram_npm/@vant/weapp/cell/index"
   },
   "navigationBarTitleText": "用户信息"
 }

@@ -1,6 +1,11 @@
 /* pages/user/free-appiont/free-appiont.wxss */
 
-
+.appiont-title{
+    width: max-content;
+    margin: 70rpx auto 0 auto;
+    font-size: large;
+    font-weight: 800;
+}
 
 .text-box{
   display: block;
@@ -20,4 +25,5 @@
   font-size: 28rpx;
   margin: 20rpx 0;
   color: rgb(141, 141, 141);
+  /* margin-left: 40rpx; */
 }

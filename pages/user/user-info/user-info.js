@@ -2,16 +2,15 @@
 import {getUserInfo} from "../../../services/logionRequest"
 import {updateStuPwd} from "../../../services/user"
 // Notify弹出
-import {handleOwnNotify,pasReg} from "../../../utils/util"
+import {handleOwnNotify,pasReg,isAuthToInfo,debounceInp} from "../../../utils/util"
 
 Page({
-
   /**
    * 页面的初始数据
    */
   data: {
     list:{
-      
+      name:"zhang"
     },
     prePassword:'',
     newPassword:'',
@@ -20,15 +19,20 @@ Page({
     avatarImg:"",
     dialogShow:false,
     isSubmit:true,
-    isMessage:false
+    isMessage:false,
+    isAuth:false,
+    // 修改信息dailog
+    mesDailog:false,
+    // 修改信息placeholder
+    mesPlaceholder:"",
+    // 当前修改的
+    mesProperty:"",
+    radio:'1'
   },
-  
-  
-  
   // 关闭弹出层
   onClose() {
     this.setData({ 
-      popShow: false 
+        popShow: false 
     });
   },
   
@@ -52,6 +56,7 @@ Page({
       }
     })
   },
+  
   // 点击弹出 更换密码 弹窗
   changePassword(){
     this.setData({
@@ -86,7 +91,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    getUserInfo().then((res) => {
+    isAuthToInfo() && getUserInfo().then((res) => {
       if(res.code === 200){
         this.setData({
           list:res.data
@@ -99,15 +104,19 @@ Page({
       handleOwnNotify('用户信息获取失败🙄')
       console.log(err);
     })
-    
-    
   },
 
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
+//   重新计算data
+  computedList(data){
+    if(Array.isArray(data)){
+        return data.map((item) => {
+            return {
 
+            }
+        })
+    }else{
+        return data
+    }
   },
 
   /**
@@ -122,38 +131,8 @@ Page({
     }
   },
 
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
+  handleSaveInfo(e){
+    console.info('表单提交携带数据', e.detail.value)
   }
+
 })

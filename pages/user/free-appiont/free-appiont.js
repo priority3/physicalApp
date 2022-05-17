@@ -1,39 +1,34 @@
 // pages/user/free-appiont/free-appiont.js
 import {Dialog,handleOwnNotify,FormData}  from "../../../utils/util"
 import {handleApplyFree,handleGetSemeter} from "../../../services/appiontList"
-
+// import {FREE_APPROVE} from "../../../config/keys"
 // 提交表达锁
 const isChangeFlag = true
+
+const approveTypeMap = {
+    "普通免测申请":0,
+    "缓测申请":1,
+    "其他免测申请":2
+}
+
+
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
+    formData:{},
     reason:'',
     // 申请学期
     semester:'',
-    // 申请得类型
-    type:0,
     // 申请得备注
     remark:'',
     fileList: [],
     // 远端保存图片链接 
     handleList:[],
-    selectOption:[],
-    selectFreeOption:[
-      {
-        text:'免测申请',
-        value:0
-      },{
-        text:'缓测申请',
-        value:1
-      },{
-        text:'其他事项',
-        value:2
-      }
-
-    ]
+    // 免测类型
+    approveType:""
   },
   // 获取学期列表
   handleGetSemester(){
@@ -93,11 +88,21 @@ Page({
   },
   
   submit(){
+    const formData = JSON.parse(wx.getStorageItem('isAuth')) 
+    if(formData){
+        this.setData({
+            formData
+        })
+    }else{
+        wx.router.push("/pages/user/free-appiont/stu-info/stu-info")
+        return
+    }
     Dialog.confirm({
       title:"提示",
       message:"是否确定提交",
     }).then(async () => {
-      const {reason,semester,handleList,type,remark} = this.data
+      const {reason,semester,handleList,approveType,remark} = this.data
+      const type = approveTypeMap[approveType]
       if(reason.trim() === ''){
         handleOwnNotify( "申请理由不能为空🙄")
         return
@@ -121,7 +126,8 @@ Page({
   },
   // 封装 提交图片操作
   batchUpload({reason,semester,handleList,type,remark}){
-    handleApplyFree({reason,semester,images:handleList,type,remark}).then((res) => {
+    const formData = this.data.formData
+    handleApplyFree(Object.assign({reason,semester,images:handleList,type,remark},formData)).then((res) => {
       handleOwnNotify('提交申请成功','success')
       setTimeout(() => {
         wx.router.pop(1)
@@ -213,6 +219,9 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    this.setData({
+        approveType:options.normal_approve
+    })
     this.handleGetSemester()
   },
 

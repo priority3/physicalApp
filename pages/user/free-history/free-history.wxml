@@ -1,4 +1,3 @@
-
 <view class="fr-his-container">
   <warn-card wx:if="{{freeInfoList.length === 0}}"  isLoading="{{isLoading}}" >
     {{isInfo  ? "暂无数据" : "加载中..."}}

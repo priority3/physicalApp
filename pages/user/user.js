@@ -1,5 +1,7 @@
 // pages/user/user.js
 import {handleGetMessage} from "../../services/appiontList"
+import {isAuthToInfo} from "../../utils/util"
+import {FREE_APPROVE} from "../../config/keys"
 Page({
 
   /**
@@ -9,10 +11,15 @@ Page({
     userInfo:{},
     avatarImg:"",
     messageDot:false,
+    urlList:{
+        normal_approve:`/pages/user/free-appiont/free-appiont?normal_approve=${FREE_APPROVE['normal_approve']}`,
+        slow_approve:`/pages/user/free-appiont/free-appiont?normal_approve=${FREE_APPROVE['slow_approve']}`,
+        other_approve:`/pages/user/free-appiont/free-appiont?normal_approve=${FREE_APPROVE['other_approve']}`
+    }
   },
   // 获取通知消息
   handleGetMessage(){
-    handleGetMessage().then((res) => {
+    isAuthToInfo() && handleGetMessage().then((res) => {
       if(res){
         this.setData({
           messageDot:true

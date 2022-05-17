@@ -1,6 +1,6 @@
 // pages/user/freee-history/free-history.js
 import {handleGetFreeHistoryList,handleUsedReady} from "../../../services/appiontList"
-import {handleOwnNotify} from "../../../utils/util"
+import {handleOwnNotify,isAuthToInfo} from "../../../utils/util"
 Page({
 
   /**
@@ -21,6 +21,10 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {  
+    if(isAuthToInfo()){
+        
+    }
+     
     this.setData({
       isLoading:true
     })

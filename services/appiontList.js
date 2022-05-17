@@ -17,8 +17,9 @@ const getUsedAppiontInfo = () => {
  * 申请免测
  * @param {申请原因，申请学期，图片} param0 
  */
-const handleApplyFree = ({reason,semester,images,remark,type,}) => {
-  return post('/freeTest/application',{reason,semester,images,remark,type,})
+const handleApplyFree = (formData) => {
+    console.log(formData);
+  return post('/freeTest/application',formData)
 }
 
 /**

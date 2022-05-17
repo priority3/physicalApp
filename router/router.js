@@ -7,12 +7,13 @@
  * @param {事件} events 
  */
 const push = (url,params,events) => {
-  let query = ""
-  for (const key in params) {
+    let query = ""
+    for (const key in params) {
     // 防止hasOwnProperty覆盖
-    if(Object.hasOwnProperty.call(params,key)){
-      const element = params[key]
-      query += `${key}=${element}&`
+        if(Object.hasOwnProperty.call(params,key)){
+        const element = params[key]
+        query += `${key}=${element}&`
+        }
     }
     wx.navigateTo({
       url: url+`?${query}`,
@@ -24,7 +25,6 @@ const push = (url,params,events) => {
         console.log(err);
       }
     })
-  }
 }
 /**
  * 关闭当前页面，跳转到应用内的某个页面。但是不允许跳转到 tabbar 页面。

@@ -4,84 +4,80 @@
 <view class="userinfo-container">
   <view class="userinfo-box">
     <view class="user-avatar">
-      <image wx-if="{{avatarImg}}" src="{{avatarImg}}" mode="scaleToFill"></image>
-      <open-data wx:else type="userAvatarUrl" ></open-data>
-      
+      <image src="{{utils.getUserAvator(avatarImg)}}" mode="scaleToFill"></image>
+      <!-- <open-data wx:else type="userAvatarUrl" ></open-data> -->
     </view>
     <view class="fun-btn">
       <debounce-button type="primary" customStyle="border-radius:10rpx;height:60rpx" bind:debouncetap="selectAvatar" >更换头像</debounce-button>
-      <debounce-button type="info" customStyle="border-radius:10rpx;height:60rpx" bind:debouncetap="changePassword" >更换密码</debounce-button>
+      <debounce-button wx-if="{{isAuthToInfo}}" type="info" customStyle="border-radius:10rpx;height:60rpx" bind:debouncetap="changePassword" >更换密码</debounce-button>
     </view>
   </view>
-  <van-cell-group>
-    <van-field
-      value="{{ list.name }}"
-      left-icon="friends-o"
-      clearable
-      label="姓名"
-      placeholder="姓名"
-      disabled="{{true}}"
-    />
-
-    <van-field
-      value="{{ list.userName }}"
-      left-icon="cluster-o"
-      label="学号"
-      placeholder="学号"
-      clearable
-      disabled="{{true}}"
-    />
-    <van-field
-      value="{{ list.phone }}"
-      left-icon="phone-o"
-      label="联系方式"
-      placeholder="联系方式"
-      clearable
-      disabled="{{true}}"
-    />
+  <form bindsubmit="handleSaveInfo">
     
-    <van-field
-      value="{{ list.grade }}"
-      left-icon="discount"
-      label="年级"
-      placeholder="年级"
-      readonly
-      
-      disabled="{{true}}"
-    />
-    <van-field
-      value="{{ list.college }}"
-      left-icon="newspaper-o"
-      label="学院"
-      placeholder="学院"
-      readonly
-      disabled="{{true}}"
-    />
-    <van-field
-      value="{{ list.identity }}"
-      left-icon="label-o"
-      label="身份"
-      placeholder="身份"
-      clearable
-      disabled="{{true}}"
-    />
-  </van-cell-group>
-  <!-- <view class="btn-box">
-    <debounce-button 
-    customStyle="width:100%;margin:10rpx 0; border-radius: 20rpx" bind:debouncetap="editAndSave" 
-    type="{{btnTypeInfo}}" 
-    isLoading="{{btnLoading}}"
-    >
-      {{editText}}
-    </debounce-button>
-  </view> -->
-  <van-notify id="van-notify" />
-  <view style="color: #868e96;text-align: right;margin: 20rpx 10rpx;font-size: 28rpx;">若信息有误，请联系管理员或老师修改</view>
-  <!-- 退出登录按钮 -->
-  <view style="width: 80%; margin: 0 auto;">
-    <debounce-button type="danger" customStyle="width:100%;border-radius:10rpx;margin-top:20rpx" bind:debouncetap="handleLoginout">退出登录</debounce-button>
-  </view>
+    <van-cell-group>
+        <van-field
+            value="{{list.name}}"
+            label="用户名"
+            name="name"
+            placeholder="请输入用户名"
+        ></van-field>
+        <van-field
+            value="{{list.grade}}"
+            label="年级"
+            name="grade"
+            placeholder="请输入用户名"
+        ></van-field>
+        <van-field
+            value="{{list.specialtyClass}}"
+            label="班级"
+            name="specialtyClass"
+            placeholder="请输入用户名"
+        ></van-field>
+        <van-cell title="性别">
+            
+        </van-cell>
 
+        <van-field
+            value="{{list.userName}}"
+            label="学号"
+            name="userName"
+            placeholder="请输入用户名"
+        ></van-field>
+        <van-field
+            value="{{list.nationality}}"
+            label="名族代码"
+            name="nationality"
+            placeholder="请输入用户名"
+        ></van-field>
+        <van-field
+            value="{{list.birth}}"
+            label="出生日期"
+            name="birth"
+            placeholder="请输入用户名"
+        ></van-field>
+        <van-field
+            value="{{list.idCard}}"
+            label="身份证号"
+            name="idCard"
+            placeholder="请输入用户名"
+        ></van-field>
+        <van-field
+            value="{{list.phone}}"
+            label="联系方式"
+            name="phone"
+            placeholder="请输入用户名"
+        ></van-field>
+    </van-cell-group>
+    <van-notify id="van-notify" />
+    <!-- 退出登录按钮 -->
+    <view style="width: 80%; margin: 0 auto;">
+        <!-- <button form-type="submit">hello</button> -->
+        <van-button customStyle="width:100%;border-radius:10rpx;margin-top:20rpx" form-type="submit" type="info">保存信息</van-button>
+        <debounce-button type="danger" customStyle="width:100%;border-radius:10rpx;margin-top:20rpx" bind:debouncetap="handleLoginout">退出登录</debounce-button>
+    </view>
+  </form>
+
+    
 
   <!-- 更换密码 -->
   <van-dialog

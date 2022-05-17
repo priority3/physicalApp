@@ -1,5 +1,6 @@
 // components/deBounceButton/deBounceButton.js
 Component({
+    behaviors: ['wx://form-field-button'],
   /**
    * 组件的属性列表
    */
@@ -27,6 +28,10 @@ Component({
     isLoading:{
       type:Boolean,
       value:false
+    },
+    formType:{
+        type:String,
+        value:""
     }
   },
 

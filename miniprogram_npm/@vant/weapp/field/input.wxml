@@ -18,6 +18,7 @@
   selection-end="{{ selectionEnd }}"
   selection-start="{{ selectionStart }}"
   always-embed="{{ alwaysEmbed }}"
+  name="{{name}}"
   password="{{ password || type === 'password' }}"
   bindinput="onInput"
   bindtap="onClickInput"

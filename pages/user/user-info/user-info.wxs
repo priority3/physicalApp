@@ -6,14 +6,20 @@ function showErrMessage (word,reword){
   if(word.trim() === ''){
     mes = '密码不能为空'
   }
-  
   // if(!reg.test(word)){
   //   mes = '密码为6-20数字和英文'
   // }
-  
   return mes
 }
 
+
+function getUserAvator(url){
+    return url || "/assets/user.png"
+}
+
+
+
 module.exports = { 
-  showErrMessage:showErrMessage
+  showErrMessage:showErrMessage,
+  getUserAvator:getUserAvator
 }

@@ -6,6 +6,7 @@
     "van-uploader": "/miniprogram_npm/@vant/weapp/uploader/index",
     "van-dropdown-menu": "/miniprogram_npm/@vant/weapp/dropdown-menu/index",
     "van-dropdown-item": "/miniprogram_npm/@vant/weapp/dropdown-item/index",
-    "van-notify": "/miniprogram_npm/@vant/weapp/notify"
+    "van-notify": "/miniprogram_npm/@vant/weapp/notify",
+    "van-divider": "/miniprogram_npm/@vant/weapp/divider/index"
   }
 }

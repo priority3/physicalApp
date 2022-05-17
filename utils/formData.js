@@ -166,5 +166,16 @@ String.prototype.utf8CodeAt = function(i) {
 };
 
 
+// 将时间戳 ---》 YYYY-MM-DD
+/**
+ * 
+ * @param {number} value 
+ */
+export function dateFormater (value){
+    let date = new Date(value)
+    return [date.getFullYear(),date.getMonth()+1,date.getDate()].join("-")
+}
+
+
 export {FormData}
 

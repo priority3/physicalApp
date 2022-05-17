@@ -1,0 +1,92 @@
+<wxs src="./stu-info.wxs" module="_"></wxs>
+<view class="stu-info-container">
+    <view class="str-info-title">
+        填写个人信息
+    </view>
+    <view class="info-subtitle">
+        基本信息
+    </view>
+    <form bindsubmit="handleFixedInfo">
+        <van-field
+            value="{{ list.name }}"
+            placeholder="请输入姓名"
+            label="姓名"
+            clearable
+            name="name"
+        />
+        <van-field
+            value="{{ list.grade }}"
+            placeholder="请输入年级"
+            label="年级"
+            clearable
+            name="grade"
+        />
+        <van-field
+            value="{{ list.specialtyClass }}"
+            placeholder="请输入专业班级"
+            label="专业班级"
+            clearable
+            name="specialtyClass"
+        />
+        <van-radio-group name="sex" value="{{_.getSexInfo(list.sex)}}">
+            <van-cell title="性别" clickable data-name="1" bind:click="onClick">
+                <van-radio slot="right-icon" name="1" >男</van-radio>
+                <van-radio slot="right-icon" name="2" >女</van-radio>
+            </van-cell>
+        </van-radio-group>
+        <van-field
+            value="{{ list.userName }}"
+            placeholder="请输入学号"
+            label="学号"
+            clearable
+            name="userName"
+        />
+        <van-field
+            value="{{ list.nationality }}"
+            placeholder="请输入名族代码"
+            label="名族代码"
+            clearable
+            name="nationality"
+        />
+        <van-cell
+            title="出生日期"
+            is-link
+            value="{{formBirthDate}}"
+            name="birth"
+            bind:click="changeBirthDailogStatus"
+        />
+        <van-action-sheet
+            show="{{ birthDailogShow }}"
+            actions="{{ actions }}"
+            bind:click-overlay="changeBirthDailogStatus"
+        >
+            <van-datetime-picker
+                type="date"
+                value="{{ currentDate }}"
+                formatter="{{ formatter }}"
+                bind:confirm="handleGetBirth"
+                bind:cancel="changeBirthDailogStatus"
+            />
+        </van-action-sheet>
+        <van-field
+            value="{{ list.idCard }}"
+            placeholder="请输入身份证号"
+            label="身份证号"
+            clearable
+            name="idCard"
+        />
+        <van-field
+            value="{{ list.phone }}"
+            placeholder="请输入联系方式"
+            label="联系方式"
+            clearable
+            name="phone"
+        />
+
+
+        <view style="display: flex;justify-content: center;width: 100%;">
+            <van-button type="primary" form-type="submit" custom-class="self-button">保存信息</van-button>
+        </view>
+    </form>
+</view>
+<van-notify id="van-notify" />
