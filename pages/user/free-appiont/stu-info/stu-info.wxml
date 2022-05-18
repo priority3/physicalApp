@@ -88,5 +88,10 @@
             <van-button type="primary" form-type="submit" custom-class="self-button">保存信息</van-button>
         </view>
     </form>
+    <view style="display: flex;justify-content: center;width: 100%;">
+        <van-button type="danger" custom-class="self-button" bind:click="handleLoginout">
+            退出
+        </van-button>
+    </view>
 </view>
 <van-notify id="van-notify" />

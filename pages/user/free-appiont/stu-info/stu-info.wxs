@@ -1,6 +1,10 @@
 
 function getSexInfo (sex){
-    return sex === '男' ? '1' : '2'
+    var res = ''
+    if(sex){
+        sex === '男' ? '1' : '2'
+    }
+    return res
 }
 module.exports = {
     getSexInfo:getSexInfo

@@ -60,12 +60,18 @@ Page({
         })
         this.changeBirthDailogStatus()
     },
+    // 清楚缓存
+    handleLoginout(){
+        wx.clearStorageSync()
+        wx.router.reLaunch('/pages/login/login')
+    },
     /**
      * 生命周期函数--监听页面加载
      */
     onLoad(options) {
         // 可能存在修改信息
-        const formData = JSON.parse(wx.getStorageItem('isAuth'))
+        const isAuth = wx.getStorageItem('isAuth')
+        const formData =isAuth ? JSON.parse(isAuth):""
         const {birth} = formData
         const curDate = new Date(birth).getTime()
         if(formData){

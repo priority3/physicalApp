@@ -88,7 +88,8 @@ Page({
   },
   
   submit(){
-    const formData = JSON.parse(wx.getStorageItem('isAuth')) 
+    const isAuth = wx.getStorageItem('isAuth')
+    const formData = isAuth ? JSON.parse(isAuth) : ""
     if(formData){
         this.setData({
             formData
