@@ -11,6 +11,7 @@ Page({
     freeInfoList:[],
     isLoading:false,
     isInfo:false,
+    isAuth:false,
   },
   // 不渲染数据
   state:{
@@ -21,12 +22,13 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {  
-    if(isAuthToInfo()){
-        
+    if(!isAuthToInfo()){
+        return
     }
      
     this.setData({
-      isLoading:true
+      isLoading:true,
+      isAuth:true
     })
     this.getList()
 
@@ -93,6 +95,9 @@ Page({
         isLoading:false
       })
     })
+  },
+  handleToFixedInfo(){
+     wx.router.replace('/pages/user/free-appiont/stu-info/stu-info')
   },
   /**
    * 生命周期函数--监听页面初次渲染完成

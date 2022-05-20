@@ -1,5 +1,7 @@
 // pages/user/free-appiont/stu-info/stu-info.js
 import {dateFormater,handleOwnNotify,validForm} from "../../../../utils/util"
+
+// 时间戳的最小值 为当前事件的50年前，转换为时间戳：24*24*60*60*1000*50*365
 Page({
 
     /**
@@ -7,6 +9,8 @@ Page({
      */
     data: {
         currentDate: new Date().getTime(),
+        minDate:new Date().getTime()-24*60*60*1000*40*365,
+        maxDate:new Date().getTime(),
         birthDailogShow:false,
         formatter(type, value) {
             type === 'year' && (value+='年')

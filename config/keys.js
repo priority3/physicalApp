@@ -1,7 +1,7 @@
 export default {
   TOKEN:"token",
   REFRESH_TOKEN:"refresh_token",
-  AUTH_INFO:"is_auth"
+  AUTH_INFO:"isAuth"
 }
 
 export const FREE_APPROVE = {

@@ -62,6 +62,8 @@
         >
             <van-datetime-picker
                 type="date"
+                min-date="{{ minDate }}"
+                max-date="{{ maxDate }}"
                 value="{{ currentDate }}"
                 formatter="{{ formatter }}"
                 bind:confirm="handleGetBirth"

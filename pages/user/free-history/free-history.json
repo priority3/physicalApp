@@ -2,7 +2,8 @@
   "usingComponents": {
     "notice-card":"/components/NoticeCard/NoticeCard",
     "van-notify": "/miniprogram_npm/@vant/weapp/notify",
-    "warn-card":"/components/WardingCard/WardingCard"
+    "warn-card":"/components/WardingCard/WardingCard",
+    "debounce-button":"/components/deBounceButton/deBounceButton"
   },
   "navigationBarTitleText": "申请历史"
 }

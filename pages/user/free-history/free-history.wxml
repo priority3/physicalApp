@@ -1,5 +1,19 @@
 <view class="fr-his-container">
-  <warn-card wx:if="{{freeInfoList.length === 0}}"  isLoading="{{isLoading}}" >
+  <warn-card wx:if="{{!isAuth}}" >
+    <view>
+        <view>{{"请完善个人信息"}}</view>
+        <view style="width: 100%;">
+            <debounce-button
+             type="primary"
+             customStyle="width:50%;margin-top:30rpx"
+             bind:debouncetap="handleToFixedInfo"
+             >
+                完善信息
+            </debounce-button>
+        </view>
+    </view>
+  </warn-card>
+  <warn-card wx:if="{{freeInfoList.length === 0 && isAuth}}"  isLoading="{{isLoading}}" >
     {{isInfo  ? "暂无数据" : "加载中..."}}
   </warn-card>
   <block wx:for="{{freeInfoList}}" wx:key="id">

@@ -6,7 +6,7 @@ Component({
   properties: {
     isLoading:{
       type:Boolean,
-      value:true
+      value:false
     }
   },
 

@@ -119,10 +119,11 @@ Page({
       success:(res)=>{
         if(res.confirm){
           handleaAppoint({testId:index}).then((res) => {
-            wx.showToast({
+          wx.showToast({
               title: res || '预约成功',
             })
           }).catch((err) => {
+           
             handleOwnNotify(err || "本学期已经预约🙄")
           })
         }
