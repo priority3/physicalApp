@@ -2,7 +2,7 @@
 function getSexInfo (sex){
     var res = ''
     if(sex){
-        sex === '男' ? '1' : '2'
+       res = sex === '男' ? '1' : '2'
     }
     return res
 }

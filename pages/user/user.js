@@ -15,7 +15,8 @@ Page({
         normal_approve:`/pages/user/free-appiont/free-appiont?normal_approve=${FREE_APPROVE['normal_approve']}`,
         slow_approve:`/pages/user/free-appiont/free-appiont?normal_approve=${FREE_APPROVE['slow_approve']}`,
         other_approve:`/pages/user/free-appiont/free-appiont?normal_approve=${FREE_APPROVE['other_approve']}`
-    }
+    },
+    token:wx.getStorageItem(wx.KEYS['TOKEN'])
   },
   // 获取通知消息
   handleGetMessage(){
@@ -52,7 +53,7 @@ Page({
    */
   onShow: function () {
     // 获取头像链接
-    this.handleGetMessage()
+    // this.handleGetMessage()
     const avatarImg = wx.getStorageItem("avatar")
     if(avatarImg){
       this.setData({

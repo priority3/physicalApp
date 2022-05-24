@@ -97,3 +97,5 @@
     </view>
 </view>
 <van-notify id="van-notify" />
+<!-- 用户确认填写信息 -->
+<van-dialog id="van-dialog" />

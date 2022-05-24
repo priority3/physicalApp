@@ -11,7 +11,7 @@ Page({
     freeInfoList:[],
     isLoading:false,
     isInfo:false,
-    isAuth:false,
+    isAuth:'',
   },
   // 不渲染数据
   state:{
@@ -25,10 +25,13 @@ Page({
     if(!isAuthToInfo()){
         return
     }
-     
+    let isAuth
+    if(wx.getStorageItem('isAuth')){
+        isAuth = wx.getStorageItem('isAuth')
+    }
     this.setData({
       isLoading:true,
-      isAuth:true
+      isAuth:isAuth
     })
     this.getList()
 
@@ -83,7 +86,14 @@ Page({
   },
 
   getList(){
-    handleGetFreeHistoryList().then((res) => {
+    let name,userName
+    const {isAuth} = this.data
+    if(!!isAuth){
+        let strisAuth = JSON.parse(isAuth)
+        name= strisAuth?.name
+        userName = strisAuth?.userName
+    }
+    handleGetFreeHistoryList({name,userName}).then((res) => {
       this.computedList(res)
     }).catch((err) => {
       this.setData({
