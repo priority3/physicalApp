@@ -1,4 +1,5 @@
 <wxs src="./stu-info.wxs" module="_"></wxs>
+
 <view class="stu-info-container">
     <view class="str-info-title">
         填写个人信息

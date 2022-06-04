@@ -1,8 +1,12 @@
 // pages/user/free-appiont/stu-info/stu-info.js
 import {dateFormater,handleOwnNotify,validForm} from "../../../../utils/util"
 import Dialog from '../../../../miniprogram_npm/@vant/weapp/dialog/dialog';
+import {isFixedInfo} from "../../../../services/user"
 
-// 时间戳的最小值 为当前事件的50年前，转换为时间戳：24*24*60*60*1000*50*365
+
+// 时间戳的最小值 为当前事件的50年前，转换为时间戳：24*60*60*1000*50*365
+const minusDate = 24*60*60*1000*40*365
+
 Page({
 
     /**
@@ -10,7 +14,7 @@ Page({
      */
     data: {
         currentDate: new Date().getTime(),
-        minDate:new Date().getTime()-24*60*60*1000*40*365,
+        minDate:new Date().getTime()-minusDate,
         maxDate:new Date().getTime(),  
         birthDailogShow:false,
         formatter(type, value) { 
@@ -19,7 +23,7 @@ Page({
             type === 'day' && (value+='日')
             return value;
         },
-        formBirthDate:""
+        formBirthDate:"",
     },
     handleFixedInfo(e){
         const date = this.data.formBirthDate
@@ -93,7 +97,8 @@ Page({
     showDailog(){
         Dialog.confirm({
             title: '填写信息说明',
-            message: '相关信息只用于免测申请后台审批,点击确认继续~',
+            message: '相关信息只用于免测申请后台审批,点击授权继续~',
+            confirmButtonText:"授权"
         })
         .then(() => {
             // on confirm

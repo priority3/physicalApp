@@ -1,3 +1,7 @@
+.stu-info-container{
+    padding-bottom: 50rpx;
+}
+
 .str-info-title{
     width: max-content;
     margin: 70rpx auto;

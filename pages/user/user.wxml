@@ -66,12 +66,12 @@
     >
       <van-icon slot="icon" name="volume-o" dot="{{messageDot}}" class="custom-icon" />  
     </van-cell>
-    <van-cell
+    <!-- <van-cell
       icon="label-o"
       is-link
       title="完善信息"
       link-type="navigateTo"
       url="/pages/user/free-appiont/stu-info/stu-info"
-    />
+    /> -->
   </view>
 </view>
