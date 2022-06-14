@@ -1,6 +1,6 @@
 // components/deBounceButton/deBounceButton.js
 Component({
-    behaviors: ['wx://form-field-button'],
+  behaviors: ['wx://form-field-button'],
   /**
    * 组件的属性列表
    */
@@ -47,7 +47,7 @@ Component({
    */
   methods: {
     btnClick(e){
-      this.triggerEvent('debouncetap', { xixi: "666传值成功" });
+      this.triggerEvent('debouncetap', e);
     }
   },
   lifetimes:{
