@@ -54,9 +54,9 @@ const handleGetSemeter = () => {
 /**
  * 获取历史免测信息
  */
-const handleGetFreeHistoryList = () => {
+const handleGetFreeHistoryList = ({name,userName}) => {
   return new Promise((resolve,reject) => {
-    get('/freeTest/freeInfo').then((res) => {
+    get('/freeTest/freeInfo',{name,userName}).then((res) => {
       resolve(res.data)
     }).catch((err) => reject(err.msg))
   })

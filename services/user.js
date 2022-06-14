@@ -1,5 +1,5 @@
 // 学生信息请求管理
-import {put} from "./http"
+import {get, put} from "./http"
 
 /**
  * 学生更改密码
@@ -9,6 +9,11 @@ const updateStuPwd = ({prePassword,newPassword}) => {
   return put('/user/updatePwd',{prePassword,newPassword})
 }
 
+const isFixedInfo = () => {
+    return get('/hello')
+}
+
 export {
-  updateStuPwd
+  updateStuPwd,
+  isFixedInfo
 }

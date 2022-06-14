@@ -1,12 +1,17 @@
 {
   "usingComponents": {
     "van-field": "/miniprogram_npm/@vant/weapp/field/index",
-    "debounce-button":"/components/deBounceButton/deBounceButton",
+    "vant-button":"/miniprogram_npm/@vant/weapp/button/index",
     "van-dialog": "/miniprogram_npm/@vant/weapp/dialog/index",
     "van-uploader": "/miniprogram_npm/@vant/weapp/uploader/index",
     "van-dropdown-menu": "/miniprogram_npm/@vant/weapp/dropdown-menu/index",
     "van-dropdown-item": "/miniprogram_npm/@vant/weapp/dropdown-item/index",
+    "van-cell":"/miniprogram_npm/@vant/weapp/cell/index",
     "van-notify": "/miniprogram_npm/@vant/weapp/notify",
-    "van-divider": "/miniprogram_npm/@vant/weapp/divider/index"
+    "van-divider": "/miniprogram_npm/@vant/weapp/divider/index",
+    "van-datetime-picker": "/miniprogram_npm/@vant/weapp/datetime-picker/index",
+    "van-action-sheet": "/miniprogram_npm/@vant/weapp/action-sheet/index",
+    "van-radio": "/miniprogram_npm/@vant/weapp/radio/index",
+    "van-radio-group": "/miniprogram_npm/@vant/weapp/radio-group/index"
   }
 }

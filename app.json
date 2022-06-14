@@ -7,7 +7,7 @@
         "pages/user/user-info/user-info",
         "pages/user/info-appiont/info-appiont",
         "pages/user/free-history/free-history",
-        "pages/user/free-appiont/stu-info/stu-info"
+        "pages/user/terms/terms"
     ],
     "window": {
         "backgroundTextStyle": "light",
@@ -32,5 +32,6 @@
             }
         ]
     },
-    "sitemapLocation": "sitemap.json"
+    "sitemapLocation": "sitemap.json",
+    "lazyCodeLoading": "requiredComponents"
 }

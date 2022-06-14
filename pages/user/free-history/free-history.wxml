@@ -1,5 +1,5 @@
 <view class="fr-his-container">
-  <warn-card wx:if="{{!isAuth}}" >
+  <warn-card wx:if="{{!!!isAuth}}" >
     <view>
         <view>{{"请完善个人信息"}}</view>
         <view style="width: 100%;">
@@ -26,7 +26,6 @@
       auditMessage="{{item.auditMessage}}"
       handler="{{item.handler}}"
       index="{{item.id}}"
-      bind:showDetail="handleUsedReady"
     ></notice-card>
   </block>
 </view>
