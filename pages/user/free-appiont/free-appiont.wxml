@@ -33,7 +33,7 @@
     preview-image="true"
   />
   <view class="img-title">个人信息</view>
-  <form bindsubmit="handleFixedInfo">
+  <form bindsubmit="handleFixedInfo" wx-if="{{isShow}}">
     <van-field
         value="{{ list.name }}"
         placeholder="请输入姓名"
@@ -116,6 +116,9 @@
     </view>
   </form>
   <!-- 确认窗口 -->
+  <view style="width: 80%;margin: 0 auto;" wx:else>
+        <vant-button custom-style="width:100%;margin-top: 20rpx; border-radius:10rpx" type="primary" formType="submit">提交</vant-button>
+    </view>
 </view>
 
 <van-dialog id="van-dialog" />

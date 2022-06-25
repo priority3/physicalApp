@@ -1,5 +1,4 @@
 <!--pages/user/info-appiont/info-appiont.wxml-->
-
 <view>
   <!-- 下拉菜单 -->
   <!-- <van-dropdown-menu active-color="#1989fa">

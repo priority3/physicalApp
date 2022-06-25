@@ -1,6 +1,7 @@
 // pages/user/free-appiont/free-appiont.js
 import { Dialog, handleOwnNotify, validForm, dateFormater } from "../../../utils/util"
 import { handleApplyFree, handleGetSemeter } from "../../../services/appiontList"
+import {isFixedInfo} from "../../../services/user"
 // import {FREE_APPROVE} from "../../../config/keys"
 // 提交表达锁
 const isChangeFlag = true
@@ -40,7 +41,8 @@ Page({
             return value;
         },
         formBirthDate: "",
-        formData: ''
+        formData: '',
+        isShow:false
     },
     // 获取学期列表
     handleGetSemester() {
@@ -305,6 +307,12 @@ Page({
         }
 
         this.handleGetSemester()
+        isFixedInfo().then(res => {
+        }).catch(err => {
+            this.setData({
+                isShow:!err
+            })
+        })
     },
 
 

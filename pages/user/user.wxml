@@ -66,13 +66,13 @@
     >
       <van-icon slot="icon" name="volume-o" dot="{{messageDot}}" class="custom-icon" />  
     </van-cell>
-    <van-cell
+    <!-- <van-cell
       icon="setting-o"
       is-link
       title="服务条款"
       link-type="navigateTo"
       url="/pages/user/terms/terms"
-    />
+    /> -->
     <!-- <van-cell
       icon="label-o"
       is-link
