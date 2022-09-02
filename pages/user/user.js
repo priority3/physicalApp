@@ -34,6 +34,11 @@ Page({
       console.log(err);
     })
   },
+  //重定向   
+  handleRedirectLogin(){
+    wx.clearStorageItem()
+    wx.router.replace('/pages/login/login')
+  },
   /**
    * 生命周期函数--监听页面加载
    */

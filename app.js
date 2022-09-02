@@ -2,7 +2,12 @@
 
 import router from "./router/router"
 import keys from "./config/keys"
-import {getStorageItem,setStorageItem,removeStorageItem} from "./utils/util"
+import {
+    getStorageItem,
+    setStorageItem,
+    removeStorageItem,
+    clearStorageItem
+} from "./utils/util"
 App({
   onLaunch() {
     // // 展示本地存储能力
@@ -40,6 +45,7 @@ App({
     wx.getStorageItem = getStorageItem
     wx.setStorageItem = setStorageItem
     wx.removeStorageItem = removeStorageItem
+    wx.clearStorageItem = clearStorageItem
   },
   globalData: {
     custom: '',

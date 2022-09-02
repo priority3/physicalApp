@@ -29,8 +29,16 @@ function removeStorageItem(keyArr) {
   }
 }
 
+function clearStorageItem(){
+    wx.clearStorage({
+      success: (res) => {},
+    })
+}
+
+
 export {
   getStorageItem,
   setStorageItem,
-  removeStorageItem
+  removeStorageItem,
+  clearStorageItem
 }

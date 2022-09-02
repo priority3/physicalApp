@@ -132,3 +132,16 @@
   transform: translate(-50%, -70%) rotate(0);
   animation: rotate 20s linear -5s infinite;
 }
+
+
+/* btn */
+.redirect-box{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 50rpx;
+}
+.redirect-box .btn {
+    width: 100%;
+}

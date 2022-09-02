@@ -69,4 +69,12 @@
   </view>
 
   <!-- redirect login -->
+  <view style="width: 80%;margin: 20rpx auto;">
+        <van-button 
+            custom-style="width:100%;margin-top: 20rpx; border-radius:10rpx" type="info" 
+            bind:click="handleRedirectLogin" 
+        >
+            {{token ? "退出登陆" : "返回登陆"}}
+        </van-button>
+    </view>
 </view>
