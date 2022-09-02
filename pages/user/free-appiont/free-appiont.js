@@ -6,6 +6,8 @@ import {isFixedInfo} from "../../../services/user"
 // 提交表达锁
 const isChangeFlag = true
 
+const DEFAULTMSG = '请稍后重试'
+
 const approveTypeMap = {
     "普通免测申请": 0,
     "缓测申请": 1,
@@ -48,6 +50,9 @@ Page({
     handleGetSemester() {
         handleGetSemeter().then((res) => {
             this.computedList(res)
+        }).catch(({msg}) => {
+            handleOwnNotify(msg || DEFAULTMSG)
+            // console.log(msg);
         })
     },
     // 对结果得重新处理
@@ -117,7 +122,7 @@ Page({
             const type = approveTypeMap[approveType]
             const { valid, errMsg } = this.handleValid(formInfo)
             if (!valid) {
-                handleOwnNotify(errMsg[0])
+                handleOwnNotify(errMsg[0] || DEFAULTMSG)
                 return
             }
             let params = type !== 2 ? { reason, semester, handleList, type } : { reason, semester, handleList, remark, type }
@@ -166,7 +171,6 @@ Page({
                 formData: form
             })
         }
-        console.log(form);
         return { valid, errMsg }
     },
     // 封装 提交图片操作
@@ -305,8 +309,8 @@ Page({
                 approveType: options.normal_approve
             })
         }
-
         this.handleGetSemester()
+        // TODO 是否显示
         isFixedInfo().then(res => {
         }).catch(err => {
             this.setData({

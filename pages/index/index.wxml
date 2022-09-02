@@ -19,7 +19,7 @@
   </block>
 
   <!-- 下拉加载更多 -->
-  <view style="text-align: center; margin-top: 10px;">
+  <view wx-if="{{!isInfo}}" style="text-align: center; margin-top: 10px;">
     <block wx:if="{{!isInfoFull}}">
       <block wx:if="{{bottonLoading}}">
         下拉加载更多

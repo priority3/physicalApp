@@ -46,7 +46,11 @@ const handleaAppoint = ({testId}) => {
 const handleGetSemeter = () => {
   return new Promise((resolve,reject) => {
     get('/semester').then((res) => {
-      resolve(res.data)
+      if(res.code !== 200){
+         reject(res.data)
+      }else{
+          resolve(res.data)
+      }
     }).catch(err => reject(err))
   })
 }
